@@ -1,0 +1,22 @@
+package com.cocea.lesson.object;
+
+class Animal{//super class
+	protected String sound = "동물은 각각에 소리가 있어요";
+	public void self() {
+		System.out.println("강아지 멍멍, 돼지는 꿀꿀");
+	}
+}
+
+public class Pig extends Animal{//child class
+        //0)돼지만의 필드
+	//개인적인 나의 문자열 울음소리 = 난 돼지니까 꿀굴
+	private String selfSound  = "난 돼지니까 꿀꿀";
+	
+	public static void main(String[] args) {
+		//1)객체 정의
+		//2)객체명 상속받은 메서드
+		//3)부모클래스 sound, + 돼지만의 필드 두가지 출력
+
+	}
+
+}

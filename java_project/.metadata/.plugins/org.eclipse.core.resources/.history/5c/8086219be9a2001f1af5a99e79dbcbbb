@@ -1,0 +1,23 @@
+package com.cocea.lesson.object;
+
+
+class Parent{
+	protected String brand = "ford";
+	public void honk() {
+		System.out.println("Tuut, tuut!");
+	}
+}
+
+public class Inherit extends Parent {//클래스 Inherit 부모클래스 Parent에게 상속받는다
+
+	public static void main(String[] args) {
+	
+		
+String inherritance ="한 클래스에서 다른 클래스로 속성과 메서드를 상속\n"+
+"한 클래스에서 다른 클래스로 속성과 메서드를 상속\n"+
+"슈퍼클래스 (부모) =>  상속을 시키는 클래스\n"+
+"하위 클래스 (자식) => 부모클래스로 상속받는 클래스\n"+
+"클래스에서 상속하려면 extends 키워드를 사용합니다.";
+	}
+
+}

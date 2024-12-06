@@ -1,0 +1,11 @@
+package com.cocea.lesson.object;
+
+public class Inherit {
+
+	public static void main(String[] args) {
+	
+		
+String inherritance ="한 클래스에서 다른 클래스로 속성과 메서드를 상속\n"
+	}
+
+}

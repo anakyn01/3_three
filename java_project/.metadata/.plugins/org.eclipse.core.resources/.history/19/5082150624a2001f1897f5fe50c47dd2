@@ -1,0 +1,30 @@
+package com.cocea.lesson.tutorial;
+
+public class Switch {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+/*
+선택사항이 많을 경우 스위치 사용
+syntax
+switch(expression){
+case x:
+//code block
+break
+
+default:
+//위에 케이스가 다 맞지 않을 경우 대체
+}
+
+
+
+
+
+
+
+
+*/

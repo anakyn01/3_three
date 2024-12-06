@@ -1,0 +1,13 @@
+package com.cocea.lesson.tutorial;
+
+public class Arr {
+
+	public static void main(String[] args) {
+		// array 단일변수에 여러값을 저장하는데 사용합니다
+		//다차원 배열 => 배열에 배열 int[][] myNumbers={{1,2,3,4},{5,6,7}}
+int[] myNums = {1,2,3,4};
+System.out.println(myNums[5]);
+		
+	}
+
+}

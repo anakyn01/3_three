@@ -1,0 +1,20 @@
+package com.cocea.lesson.object;
+
+class Vehicle {
+	//vehicle attribute => protected
+	protected String brand = "bmw";
+	//vehicle method
+	public void bureng() {
+		System.out.println("ºÎ¸ª ºÎ¸ª");
+	}
+}
+
+
+public class Car extends Vehicle{
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

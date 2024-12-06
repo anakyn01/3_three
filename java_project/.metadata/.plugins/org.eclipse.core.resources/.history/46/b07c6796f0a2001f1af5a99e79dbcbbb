@@ -1,0 +1,19 @@
+package com.cocea.lesson.object;
+
+class Rider{
+	protected int price= 300;
+	public void talk() {
+		System.out.println("坷 历放茄单");
+	}
+}
+
+public class Bike extends Rider {
+    //鞘靛
+	private int bikePrice = 100;
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//按眉
+	}
+
+}

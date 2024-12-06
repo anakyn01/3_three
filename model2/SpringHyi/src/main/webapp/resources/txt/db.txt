@@ -1,0 +1,9 @@
+create table `book`(
+`book_id` BIGINT unsigned not null auto_increment primary key,
+`title` varchar(200) not null,
+`category` varchar(200) not null default '',
+`price` int null,
+`insert_date` datetime not null default now()
+)
+collate='utf8mb4_general_ci';
+select * from book;

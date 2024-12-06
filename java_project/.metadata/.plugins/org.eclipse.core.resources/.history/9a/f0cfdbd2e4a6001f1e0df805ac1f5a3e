@@ -1,0 +1,9 @@
+package com.cocea.lesson.object;
+
+public class HashSET {
+
+	public static void main(String[] args) {
+		// 해시셋은 고유한 유니크 one=> 중복데이터를 허용하지 않음
+	}
+
+}

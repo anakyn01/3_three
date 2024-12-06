@@ -1,0 +1,20 @@
+package com.cocea.lesson.object;
+
+class Cow {
+	public void animalSound() {
+		System.out.println("음메");
+	}
+}
+
+
+public class Poly {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+String Dec = "자바 다형성\n"+
+"다형성이란 '여러 형태를 의미 합니다[상속을 통해 관련된 여러 클래스가 있을때 발생함을 의미합니다]' \n"+
+"상속을 받아서 단일 작업방식을 다양한 방식으로 수행합니다";
+		
+	}
+
+}

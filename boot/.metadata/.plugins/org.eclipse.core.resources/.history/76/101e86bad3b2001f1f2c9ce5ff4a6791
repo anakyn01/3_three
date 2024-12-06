@@ -1,0 +1,12 @@
+<div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+	<div class="carousel-indicators">
+	</div>
+	
+	<div class="carousel-inner">
+	</div>
+	
+	<button class="carousel-control-prev" data-bs-target="#demo" data-bs-slide="prev">
+	</button>
+	
+</div>	

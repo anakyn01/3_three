@@ -1,0 +1,6 @@
+<div w3-include-html="include/header.html"></div>
+
+<div class="container-fluid">
+	<div class="row">
+	</div>
+</div>

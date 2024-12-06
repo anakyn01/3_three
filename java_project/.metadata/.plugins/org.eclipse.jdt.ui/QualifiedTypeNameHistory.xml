@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.cocea.lesson.object.OuterClass.InnerClass"/>
+    <fullyQualifiedTypeName name="com.cocea.lesson.object.OuterClass.InnerClass.ThreeClass"/>
+    <fullyQualifiedTypeName name="com.cocea.lesson.object.St1.St2"/>
+    <fullyQualifiedTypeName name="com.cocea.lesson.object.St1.St2.St3"/>
+    <fullyQualifiedTypeName name="com.cocea.lesson.object.OutClass.MidClass.Thr"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.util.Iterator"/>
+</qualifiedTypeNameHistroy>

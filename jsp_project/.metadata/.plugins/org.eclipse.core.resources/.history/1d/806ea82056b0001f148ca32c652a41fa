@@ -1,0 +1,6 @@
+package test;
+
+public class Person {
+	//1) 맴버변수(프로퍼티) 정의
+
+}

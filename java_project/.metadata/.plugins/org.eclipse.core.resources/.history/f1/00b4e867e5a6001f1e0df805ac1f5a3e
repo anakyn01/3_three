@@ -1,0 +1,19 @@
+package com.cocea.lesson.object;
+
+import java.util.HashSet;
+
+public class HashSET {
+
+	public static void main(String[] args) {
+		// 해시셋은 고유한 유니크 one=> 중복데이터를 허용하지 않음
+		// 색인이 없고 최초실행에 배치를 유지함
+		HashSet<String> cars = new HashSet<String>();
+		cars.add("Volvo");cars.add("Volvo");cars.add("Volvo");
+		cars.add("BMW");cars.add("BMW");
+		cars.add("Mazda");
+		System.out.println(cars);
+		//항목이 존재하는지 확인
+		
+	}
+
+}

@@ -1,0 +1,53 @@
+package com.cocea.lesson.object;
+
+import java.util.ArrayList;//ctrl + shift + O
+//java.util(��Ű��) ArrayList(Ŭ����)
+
+
+public class Arr {
+
+	public static void main(String[] args) {
+		
+		ArrayList<String> bbs = new ArrayList<String>();
+		bbs.add("글쓴이");
+		bbs.add("제목");
+		bbs.add("내용");
+		//실수로 누락시켯을때
+		bbs.add(0, "번호");
+		//지정하는 항목에 엑세스 form action="데이터를 받는 장소"
+		//새롭게 쓰는것 post 이미 존재하는 항목을 리턴시킬때 get
+		//접근제어자 한정자 새로만드는것 setter, getter(기존에 있는걸 리턴)
+		
+		System.out.println(bbs);
+		//두번째 항목에 엑세스 할때
+		System.out.println(bbs.get(1));//bbs어레이리스트에 두번째 항목 엑세스
+		
+		
+		ArrayList<String> cars = new ArrayList<String>();
+		//
+		cars.add("차1");
+		cars.add("차2");
+		cars.add("차3");
+		//4번으로 차4
+		cars.add(3,"차4");
+		
+		System.out.println(cars); 
+		
+		
+		
+		
+		
+		
+String TheArray ="����Ʈ�� ���鶧 ���\n"+
+"�Ϲ� ���� ��̿� �ٸ��� �ڹ���ƿ ��̴� �迭�� ũ�⸦ �����Ҽ� ����\n"+
+"�������� �߰� �Ҷ��� add�� �����\n"+
+"�׸� ������ => get �ε��� ��ȣ\n"+
+"�׸񺯰� => set()\n"+
+"�׸����� => remove()n"+
+"�������� => clear()\n"+
+"ũ�⸦ �����Ҽ� ������ �˾ƺ��� ���� => size()\n"+
+"for-each�� �ݺ��Ҽ� ����\n"+
+"���� Ŭ������ ����Ҽ� ����(���ð��� ��ü��)";
+	}
+
+}

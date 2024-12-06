@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sql</title>
+</head>
+<body>
+<h1>SQL</h1>
+<pre>
+sql은 Mysql, sql server, Ms Access, Oracle, Sysbase, Postgress  
+구조화된 쿼리 언어를 의미합니다
+- 데이터를 검색할수 있고, 레코드 삽입(쓰기) , 레코드 수정, 레코드 업데이트
+- RDBMS => 관계형 데이터베이스 관리 시스템을 의미
+
+DB 명령어 종류
+데이터 조작어[데이터에 변형을 가하는 종류] (DML) : select, insert, update, delete
+데이터 정의어[생성 변경, 삭제](DDL): create alter drop
+데이터 제어어 (DCL): grant 데이터베이스에 접근하고 객체들을 사용하도록 권한을 주고 회수
+트랜잭션 제어어 (TCL): commit, rollback : 논리적인 작업의 단위를 묶어서 dml에 조작된 겨로가를 작업단위 별로 제어하는 명령
+
+가장 중요한 SQL명령 중 일부
+select : 데이터베이스에서 데이터를 추출
+select 사용자이름, 도시 from 테이블
+select distinct{고유한 다른} 나라 form 사용자[테이블] 
+예를 들어 10명에 고객이 있는데 각각 3명은 똑같은 나라
+7명은 각각 다름 => 중복을 허용하지 않음
+
+where => 레코드를 필터링 하는데 사용합니다 지정된 조건을 충족하는 레코드만 추출합니다
+select * from 고객 (1000)
+where Country='도쿄'
+select * from 수학시간
+where 수험자 > 80;
+
+ORDER BY => 결과 집합을 오름차순이나 내림차순으로 정렬하는데 사용합니다
+ORDER BY는 기본적으로 레코드를 오름차순으로 정렬합니다
+레코드를 내림차순으로 정렬하려면 desc키워드를 사용하세요
+알파벳으로 정리
+
+둘을 동시에 사용할수도 있습니다
+select * from apple
+order by 국가 asc, 고객은 desc
+
+
+
+update : 데이터 수정
+delete : 데이터 삭제
+insert into : 새로은 데이터를 삽입
+두가지 방법으로 사용합니다
+
+null : 값이 없는 필드 입니다
+0이나 공백이 포함된 필드와 다르다 
+레코드 생성중에 비워둔 필드
+
+insert into 테이블명 (컬럼1, 컬럼2, 컬럼3) values (값1, 값2, 값3) fm
+insert into 테이블명 values (값1, 값2, 값3)
+
+create database : 데이터 베이스 생성
+alter database : 데이터 베이스를 수정
+create table : 테이블을 만듬
+drop table: 테이블을 아예 삭제
+create index : 검색키를 생성
+drop index: 인덱스를 삭제
+
+</pre>
+</body>
+</html>

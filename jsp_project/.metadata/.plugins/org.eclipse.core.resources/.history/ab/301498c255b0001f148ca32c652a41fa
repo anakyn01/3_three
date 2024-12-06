@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.util.Date"
+%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="../include/header.jsp" %>
+<div class="container">
+<div class="row">
+<div class="col-md-12 text-white">
+<h1>jsp 유즈빈</h1>
+<pre>
+- 자바빈즈는 동적 콘텐츠 개발을 위해 자바코드를 사용하여 자바 클래스로 로직을 
+작성하는 방법입니다
+- 다시말해 jsp페이지에서 화면을 표현하기 위한 계산식이나 자료의 처리를 담당하는
+자바 코드를 따로 분리하여 작성하는것을 의미 합니다
+</pre>
+<jsp:useBean id="myTime" class="java.util.Date"/>
+<p>
+<% out.println("오늘의 날짜 및 시각"); %>
+</p>
+<p><%= %></p>
+
+<jsp:useBean id="multi" class="test.Calculator"/>
+<%
+int q = multi.process(5);
+out.println("5의 3제곱 : " + q);
+%>
+<h1>액션태그</h1>
+<pre>
+- 서버나 클라이언트에게 어떤 행동을 하도록 명령하는 태그로 스크립트 태그,디렉티브 태그와
+함께 jsp페이지를 구성하는 태그입니다
+- 선언에서 jsp란 예약어가 들어갑니다
+forward[다른 페이지로 이동], include[외부 페이지를 불러옴], 
+useBean[자바빈즈를 설정한다], setProperty[자바빈즈에 프로퍼티값 설정], 
+getProperty[자바빈즈에 프로퍼티값을 얻어온다], 
+param[태그에 인자를 추가한다]
+</pre>
+</div>
+</div>
+</div>
+<%@ include file="../include/footer.jsp" %>

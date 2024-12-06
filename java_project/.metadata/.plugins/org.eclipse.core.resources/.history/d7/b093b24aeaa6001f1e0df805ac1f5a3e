@@ -1,0 +1,10 @@
+package com.cocea.lesson.object;
+
+public class TryCatchFinally {
+
+	public static void main(String[] args) {
+		// 예외
+
+	}
+
+}

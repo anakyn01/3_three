@@ -1,0 +1,5 @@
+package com.spring.hyi.dao;
+
+public class BookDao {
+
+}
