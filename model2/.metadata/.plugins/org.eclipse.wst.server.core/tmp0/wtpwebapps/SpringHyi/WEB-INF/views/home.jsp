@@ -1,14 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-<html>
-<head>
-	<title>Home</title>
-</head>
-<body>
-<h1>
-	Hello world!  
-</h1>
+<jsp:include page="include/header.jsp" flush="false"/>
 
-<P>  The time on the server is ${serverTime}. </P>
-</body>
-</html>
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+
+</div>
+</div>
+</div>
+
+<jsp:include page="include/footer.jsp" flush="false"/>

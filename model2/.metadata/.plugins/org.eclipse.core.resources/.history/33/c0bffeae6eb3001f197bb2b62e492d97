@@ -1,7 +1,0 @@
-package com.spring.hyi;
-
-@Controller//어노테이션[다른 프로그램에게 유용한 정보를 제공하기위해 사용하는  주석
-//프로젝트를 관리하는 콘트롤러로 임명시킴
-public class HyiController {
-
-}

@@ -1,5 +1,0 @@
-package com.spring.hyi.service;
-
-public class BookServiceImpl implements BookService {
-
-}

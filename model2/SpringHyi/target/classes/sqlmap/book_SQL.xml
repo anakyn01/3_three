@@ -8,6 +8,31 @@ values
 (#{title}, #{category}, #{price})
 ]]>
 </insert>
+<select id="select_detail" parameterType="hashMap" resultType="hashMap">
+<![CDATA[
+select title, category, price, insert_date from book where book_id = #{bookId}
+]]>
+</select>
+<update id="update" parameterType="hashMap">
+<![CDATA[
+update book set title=#{title}, category=#{category}, price=#{price}
+where
+book_id = #{bookId}
+]]>
+</update>
+<delete id="delete" parameterType="hashMap">
+<![CDATA[
+delete from book where book_id = #{bookId}
+]]>
+</delete>
+<select id="select_list" parameterType="hashMap" resultType="hashMap">
+<![CDATA[
+select 
+book_id, title, category, price, insert_date
+from book
+order by insert_date desc
+]]><!-- 날짜의 경우 오래된 순부터 정렬 asc, 최신 순 부터 정렬되며 desc -->
+</select>
 </mapper>
 <!-- 
 parameterType="String" => 파라미터를 한개로 처리
