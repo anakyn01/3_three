@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member"><!-- 네임스페이스는 테이블명이나 밸류오브젝트 -->
+<insert id="join" parameterType="hashMap" useGeneratedKeys="true" keyProperty="userId">
+<![CDATA[
+insert into member 
+(userId, userPw, userPwRe, userName, userPhone, userGender, userAdress) 
+values 
+(#{userId}, #{userPw}, #{userPwRe}, #{userName}, #{userPhone}, #{userGender}, #{userAdress})
+]]>
+</insert>
+</mapper>

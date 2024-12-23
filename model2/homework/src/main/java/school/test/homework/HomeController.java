@@ -1,39 +1,62 @@
 package school.test.homework;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
-/**
- * Handles requests for the application home page.
- */
+import school.test.homework.service.HomeService;
+
 @Controller
 public class HomeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	@Autowired
+	HomeService homeService;
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
+	@GetMapping("/")
+	public String home() {
 		return "home";
 	}
+	
+	@GetMapping("/create")
+	public String create() {//create 함수는 views에서 create.jsp
+		return "create";
+	}
+	@PostMapping("/create")
+	public ModelAndView createPost(@RequestParam Map<String, Object>map) {
+		
+		ModelAndView mav = new ModelAndView();
+
+		String bno = this.homeService.create(map);
+		if (bno == null) {
+			mav.setViewName("redirect:/create");
+		}else {
+			mav.setViewName("redirect:/detail?Bno=" + bno);
+		}
+		
+		return mav;
+	}
+	
+	//read
+	@GetMapping("/detail")
+	public ModelAndView detail(@RequestParam Map<String, Object>map) {
+		Map<String, Object> detailMap = this.homeService.detail(map);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("data", detailMap);
+		String Bno = map.get("Bno").toString();
+		mav.addObject("Bno",Bno);
+		mav.setViewName("/detail");
+		return mav;
+	}
+	
+	
+	
+	
+	
 	
 }

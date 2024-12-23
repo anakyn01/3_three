@@ -34,6 +34,25 @@ ${row.title}
 </tbody>
 </table>
 
+<p class="my-3">
+<form>
+<div class="d-flex">
+<input 
+type="text" 
+placeholder="검색" 
+name="keyword" 
+value="${keyword}"
+class="form-control"
+/>
+<input 
+type="submit"
+value="검색"
+class="btn btn-primary"
+/>
+</div>
+</form>
+</p>
+
 <div class="d-flex justify-content-end my-5">
 <a href="/create" class="btn btn-outline-primary">글쓰기</a>
 </div>

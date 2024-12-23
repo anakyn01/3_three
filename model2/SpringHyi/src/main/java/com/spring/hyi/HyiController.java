@@ -155,6 +155,16 @@ public class HyiController {
 		//데이터를 뷰에 전달할수 있게 mav 객체에 넣는다
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("data", list);
+		//검색을 위한 구문추가
+		if(map.containsKey("keyword")) {//파라미터가 잇다면
+		mav.addObject("keyword", map.get("keyword"));
+		//뷰에 키워드를 전달한다
+		}
+		/*
+		목록 페이지에는 keyword HTTP파라미터가 있을수도 있고 없을 수도 있다 
+		따라서 파라미터가 있는지를 검사한다
+		*/
+		
 		mav.setViewName("/sub/list");
 		return mav;
 	}

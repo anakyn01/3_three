@@ -1,4 +1,5 @@
-com\spring\hyi\service\BookServiceImpl.class
 com\spring\hyi\dao\BookDao.class
+com\spring\hyi\MemberController.class
+com\spring\hyi\service\BookServiceImpl.class
 com\spring\hyi\HyiController.class
 com\spring\hyi\service\BookService.class
