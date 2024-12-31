@@ -1,1 +1,4 @@
+com\simple\blog\dao\BlogDAO.class
+com\simple\blog\service\BlogServiceImpl.class
 com\simple\blog\BlogController.class
+com\simple\blog\service\BlogService.class

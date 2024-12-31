@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<% pageContext.setAttribute("CRLF", "\r\n"); %><!-- 줄바꿈 적용 -->
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<% pageContext.setAttribute("CRLF", "\r\n"); %> <!-- 줄바꿈 적용 -->
 <jsp:include page="include/header.jsp"/>
 
 <div class="container">
@@ -17,10 +17,6 @@
 	<tr>
 		<th>번호</th>
 		<td>${blogCont.BLG_CONT_SEQ}</td>
-	</tr>
-	<tr>
-		<th>제목</th>
-		<td>${blogCont.TITLE}</td>
 	</tr>
 	<tr>
 		<th>본문</th>
@@ -40,14 +36,11 @@
 <div class="btn-group">
 <a href="/list" class="btn btn-outline-primary">list</a>
 <a href="/edit/${blogCont.BLG_CONT_SEQ}" class="btn btn-outline-primary">수정</a>
-<input type="submit" value="삭제" class="btn btn-outline-danger"/>
+<input type="submit" value="삭제" class="btn btn-outline-primary"/>
 </div>
 </form>
-
-
 </div>
 </div>
 </div>
-
 
 <jsp:include page="include/footer.jsp"/>

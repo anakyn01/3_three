@@ -24,11 +24,6 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-		
-	<servlet-mapping>
-		<servlet-name>appServlet</servlet-name>
-		<url-pattern>/</url-pattern>
-	</servlet-mapping>
 	
 	<filter>
     <filter-name>encodingFilter</filter-name>
@@ -47,5 +42,28 @@
     <filter-name>encodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
 </filter-mapping>
+<filter>
+ <filter-name>httpMethodFilter</filter-name>
+ <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+ </filter>
+ <filter-mapping>
+    <filter-name>httpMethodFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+ 
+<!-- 
+httpMethodFilter 추가
+- http 데이터의 수정은 put 메소드를 사용합니다
+- 다만 웹 브라우저는 GET과 POST만 대부분 인식하므로 put을 처리할 수가 없다
+- 그래서 많은 프로젝트에서 GET을 제외한 경우에는 POST를 사용함
+- 스프링은 이런 경우에 대비하여 HTTP메소드를 에뮬레이션 하는 기능이 있다
+(브라우저에서 POST메소드로 서버를 호출해도 서버에서 PUT요청으로 처리합니다)
+- 자동으로 되는건 아니라 메소드필터를 추가함
+ -->
+		
+	<servlet-mapping>
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
 
 </web-app>
