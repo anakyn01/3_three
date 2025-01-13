@@ -12,6 +12,24 @@ values
 (#{seq_blg_cont}, #{title}, #{content_body})
 ]]>
 </insert>
+<select id="selectOne" parameterType="java.lang.Integer" resultType="hashMap">
+<![CDATA[
+select 
+BLG_CONT_SEQ, TITLE, TO_CHAR(CONT_BDY) as CONT_BDY, INSERT_DT
+from TB_BLG_CONT
+where BLG_CONT_SEQ = #{BLG_CONT_SEQ}
+]]>
+</select>
+<update id="update" parameterType="com.simple.blog.dto.BlogEditRequestVO">
+<![CDATA[
+update tb_blg_cont
+set
+TITLE = #{title},
+CONT_BDY = #{contBdy}
+where
+blg_cont_seq = #{blogContSeq}
+]]>
+</update>
 </mapper>
 <!-- 
 keyProperty="seq_blg_cont" => 생성된 키가 저장될 객체의 속성 이름 mybatis가 selectKey문장을 실행하면 결과를 

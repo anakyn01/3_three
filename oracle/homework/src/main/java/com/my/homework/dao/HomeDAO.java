@@ -1,9 +1,12 @@
 package com.my.homework.dao;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import java.util.*;
+
+import com.my.homework.dto.HomeEditRequestVO;
 
 @Repository
 public class HomeDAO {
@@ -25,5 +28,23 @@ public class HomeDAO {
 		}
 		return -1;//실패했을 경우 -1를 리턴 
 	}
+	public Map<String, Object> selectOne(int blogContSeq) {
+		return this.sqlSessionTemplate.selectOne("TB_BLG_CONT.selectOne", blogContSeq);
+		//마이바티스 클래스 인스턴스 selectOne(단일 결과) 만약 하나이상이 나올경우 투매니익센셥 오류 발생
+				
+	}
+	
+	//edit
+	public int update(HomeEditRequestVO homeEditRequestVO) {
+		return this.sqlSessionTemplate.update("TB_BLG_CONT.update", homeEditRequestVO);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

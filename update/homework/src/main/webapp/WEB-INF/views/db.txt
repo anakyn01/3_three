@@ -1,0 +1,51 @@
+alter session set "_oracle_script" = true;
+create user "H_USR" identified by "1234";
+grant connect to "H_USR";
+GRANT RESOURCE TO "H_USR";
+ALTER USER H_USR DEFAULT TABLESPACE USERS QUOTA UNLIMITED ON USERS;
+
+테이블 생성
+create table tb_blg_cont(
+blg_cont_seq number not null primary key,
+title nvarchar2(256) not null,
+cont_bdy nclob not null,
+insert_dt date default sysdate
+);
+
+시퀀스 명령
+create sequence seq_blg_cont;
+
+insert into tb_blg_cont (blg_cont_seq, title, cont_bdy)
+values
+(seq_blg_cont.nextval, 'test', 'test2');
+
+select * from tb_blg_cont;
+
+--빈
+
+<bean id="dataSource"
+    class="org.apache.commons.dbcp2.BasicDataSource"
+    destroy-method="close">
+    <property name="driverClassName"
+        value="oracle.jdbc.driver.OracleDriver" />
+    <property name="url"
+        value="jdbc:oracle:thin:@localhost:1521:xe" />
+    <property name="username" value="H_USR" />
+    <property name="password" value="1234" />
+</bean>
+<bean id="sqlSessionFactory"
+    class="org.mybatis.spring.SqlSessionFactoryBean">
+    <property name="dataSource" ref="dataSource" />
+    <property name="mapperLocations"
+        value="classpath:/sqlmap/**/*_SQL.xml" />
+</bean>
+<bean id="sqlSessionTemplate"
+    class="org.mybatis.spring.SqlSessionTemplate">
+    <constructor-arg index="0" ref="sqlSessionFactory" />
+</bean>
+
+매퍼
+
+
+
+

@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="school.test.homework">
+	<logger name="com.my.homework">
 		<level value="info" />
 	</logger>
 	

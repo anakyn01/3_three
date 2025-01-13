@@ -1,0 +1,32 @@
+- 유저 생성 -
+alter session set "_oracle_script" = true;
+create user "PAGE_USR" identified by "1234";
+grant connect to "PAGE_USR";
+grant resource to "PAGE_USR";
+alter user PAGE_USR default tablespace users quota unlimited on users;
+
+- 테이블 명령어 -
+create table tbl_board(
+bno number not null primary key,
+title NVARCHAR2(50) not null,
+content nvarchar2(500) not null,
+writer varchar2(30) not null,
+regDate date default sysdate,
+viewCnt int default 0
+);
+commit;
+select * from tbl_board;
+
+패키지
+bbs.page.pagination.controller
+bbs.page.pagination.domain
+bbs.page.pagination.dao
+bbs.page.pagination.service
+
+
+
+
+
+
+
+

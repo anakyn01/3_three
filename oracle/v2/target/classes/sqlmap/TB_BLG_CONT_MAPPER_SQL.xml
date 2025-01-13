@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spring.mvc.v2.mapper.BlogMapper">
+<delete id="delete" parameterType="java.lang.Integer">
+<![CDATA[
+delete from tb_blg_cont where blg_cont_seq = #{blg_cont_seq}
+]]>
+</delete>
+<resultMap type="spring.mvc.v2.vo.V2ListResponseVO" id="selectListResultMap">
+<result column="BLG_CONT_SEQ" property="blgContSeq" jdbcType="INTEGER" javaType="int"/>
+<result column="TITLE" property="title" jdbcType="NVARCHAR" javaType="String"/>
+<result column="CONT_BDY" property="contBdy" jdbcType="NVARCHAR" javaType="String"/>
+<result column="INSERT_DT" property="insertDt" jdbcType="TIMESTAMP" javaType="java.time.LocalDateTime"/>
+</resultMap>
+<select id="selectList" parameterType="spring.mvc.v2.vo.V2ListRequestVO" resultMap="selectListResultMap">
+<![CDATA[
+select blg_cont_seq, title, to_char(cont_bdy) as cont_bdy, insert_dt from tb_blg_cont where 1 = 1
+]]><!-- 관습적인 구문 1 = 1 참이다 그래서 데이터에 따라서 추가 조건이 붙을수 있고 않을수도 있는 경우에 사용됩니다-->
+<if test="search != null"><!-- 조건이 들어가면 다이나믹 쿼리 -->
+AND (TITLE LIKE '%' || #{search} || '%' OR CONT_BDY LIKE '%' || #{search} || '%')
+</if><!-- 조건이 2개 이상일 경우 처음에 시작하는 조건은 where로 시작하고 두번째로 시작하는 조건은 and 혹은 or등을 연결해서 해줍니다 -->
+</select>
+</mapper>
+<!-- 
+property: 자바의 멤버변수명 (혹은 맵의 키)입니다
+jdbcType: JDBC의 타입 각데이터베이스 벤더별로 열 타입에 해당하는 JDBC 타입이 따로 정의되어 있습니다
+javaType: 자바의 타입
+column : 데이터베이스 열의 이름이다
+ -->
+
+
+
+
+
+
+

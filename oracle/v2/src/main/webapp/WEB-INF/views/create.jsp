@@ -12,7 +12,7 @@
 		<label class="form-label w-25">
 		컨텐츠 제목 :
 		</label>
-		<input type="text" name="title" class="form-control w-75" placeholder="제목을 적어주세요"/>
+	    <input type="text" name="title" class="form-control w-75" placeholder="제목을 적어주세요"/>
 	</div>
 	<div class="input-group">
 		<label class="form-label w-25">

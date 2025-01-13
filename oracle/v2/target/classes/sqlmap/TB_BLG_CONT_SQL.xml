@@ -12,19 +12,19 @@ values
 (#{seq_blg_cont}, #{title}, #{content_body})
 ]]>
 </insert>
-<select id="select_detail" parameterType="java.lang.Integer" resultType="hashMap">
+<select id="selectOne" parameterType="java.lang.Integer" resultType="hashMap">
 <![CDATA[
-select
+select 
 BLG_CONT_SEQ, TITLE, TO_CHAR(CONT_BDY) as CONT_BDY, INSERT_DT
 from TB_BLG_CONT
-where BLG_CONT_SEQ = #{BLG_CONT_SEQ} 
-]]> 
+where BLG_CONT_SEQ = #{BLG_CONT_SEQ}
+]]>
 </select>
 <update id="update" parameterType="spring.mvc.v2.vo.V2EditRequestVO">
 <![CDATA[
 UPDATE TB_BLG_CONT
 SET
-TITLE = #{title}, 
+TITLE = #{title},
 CONT_BDY = #{contBdy}
 WHERE
 BLG_CONT_SEQ = #{blogContSeq}
@@ -33,7 +33,7 @@ BLG_CONT_SEQ = #{blogContSeq}
 </mapper>
 <!-- 
 BLG_CONT_SEQ : 콘텐츠에 대한 시퀀스 또는 식별자
-CONT_BDY : 본문 TO_CHAR[원본데이터를 바꾸지 않고 형변환하여 출력해주는 함수] 문자열로 변환시킴
+CONT_BDY : 본문 TO_CHAR[원본데이터를 바꾸지 않고 형변환해서 출력해 주는 함수] 문자열로 변환시킴
 TITLE : 제목
 INSERT_DT : 날짜
  -->
