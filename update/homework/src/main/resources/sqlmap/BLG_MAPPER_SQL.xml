@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.homework.mapper.HomeMapper">
+<delete id="delete" parameterType="java.lang.Integer">
+<![CDATA[
+delete from TB_BLG_CONT
+where BLG_CONT_SEQ  = #{BLG_CONT_SEQ}
+]]>
+</delete>
+<update id="update" parameterType="com.my.homework.dto.HomeEditRequestVO">
+<![CDATA[
+update TB_BLG_CONT
+set TITLE = #{title} , CONT_BDY = #{contBdy} 
+where BLG_CONT_SEQ = #{blogContSeq}
+]]>
+</update>
+<resultMap type="com.my.homework.dto.HomeListResponseVO" id="selectListResultMap" >
+<result column="BLG_CONT_SEQ" property="blogContSeq" jdbcType="INTEGER" javaType="int"/>
+<result column="TITLE" property="title" jdbcType="NVARCHAR" javaType="String"/>
+<result column="CONT_BDY" property="contBdy" jdbcType="NVARCHAR" javaType="String"/>
+<result column="INSERT_DT" property="insertDt" jdbcType="TIMESTAMP" javaType="java.time.LocalDateTime"/>
+</resultMap>
+<select id="selectList" parameterType="com.my.homework.dto.HomeListRequestVO" resultMap="selectListResultMap">
+<![CDATA[
+select BLG_CONT_SEQ, TITLE, TO_CHAR(CONT_BDY) as CONT_BDY, INSERT_DT from TB_BLG_CONT where 1 = 1
+]]>
+<if test="search != null">
+AND (TITLE LIKE '%' || #{search} || '%' OR CONT_BDY LIKE '%' || #{search}  '%')
+</if>
+</select>
+</mapper>
+<!-- JDBC (Java Data Base Connectivity) 타입
+API 사용: API를 사용하여 데이터베이스와 연결하고, SQL 쿼리 결과를 자바 객체로 변환합니다.
+데이터 타입 지정: SQL 쿼리를 통해 데이터를 전달할 때 사용되는 데이터 타입을 지정하는 속성입니다. 주로 MyBatis와 같은 ORM (Object-Relational Mapping) 
+프레임워크에서 사용되어 예외 처리 및 정밀도 유지함
+Boxing: 기본 타입의 데이터를 래퍼 클래스의 인스턴스로 변환하는 과정입니다. 예: int -> Integer.
+언박싱(Unboxing): 래퍼 클래스의 인스턴스에 저장된 값을 기본 타입의 데이터로 변환하는 과정입니다. 예: Integer -> int. -->

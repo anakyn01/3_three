@@ -14,7 +14,7 @@
 <input
 class="form-control"
 placeholder="Search"
-value="${blogListRequestVO.search}"
+value="${homeListRequestVO.search}"
 />
 <input
 type="submit"
@@ -43,11 +43,19 @@ class="btn btn-outline-success"
 </tr>
 </thead>
 <tbody>
-<c:forEach var="blogListResponseVO" items="${blogListResponseVOList}">
+<c:forEach var="homeListResponseVO" items="${homeListResponseVOList}">
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td class="text-center">
+${homeListResponseVO.blgContSeq}
+</td>
+<td>
+<a href="/read/${homeListResponseVO.blgContSeq}">
+${homeListResponseVO.title}
+</a>
+</td>
+<td class="text-center">
+${homeListResponseVO.insertDtFormat}
+</td>
 </tr>
 </c:forEach>
 </tbody>
@@ -58,7 +66,7 @@ class="btn btn-outline-success"
 	</a>
 	</div>
 	
-	<c:if test="${empty blogListResponseVOList}">
+	<c:if test="${empty homeListResponseVOList}">
 	<strong class="text-secondary">검색 결과가 없습니다</strong>
 	</c:if>
 </div>

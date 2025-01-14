@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <% pageContext.setAttribute("CRLF", "\r\n"); %><!-- 줄바꿈 적용 -->
-<jsp:include page="include/header.jsp"></jsp:include>
+<jsp:include page="include/header.jsp"/>
 
 <div class="container">
 <div class="row">
@@ -14,29 +14,26 @@
 <col width="25%"/>
 <col width="75%"/>
 </colgroup>
-	<tr>
-		<th>번호</th>
-		<td>${blogCont.BLG_CONT_SEQ}</td>
-	</tr>
-	
-	<tr>
-		<th>제목</th>
-		<td>${blogCont.TITLE}</td>
-	</tr>
-	
-	<tr>
-		<th>본문</th>
-		<td>
-		${fn:replace(blogCont.CONT_BDY, CRLF, '<br/>')}
-		</td>
-	</tr>
-	
-	<tr>
-		<th>입력일</th>
-		<td>
-		<fmt:formatDate value="${blogCont.INSERT_DT}" pattern="yyyy.MM.dd HH:mm:ss"/>
-		</td>
-	</tr>	
+   <tr>
+      <th>번호</th>
+      <td>${blogCont.BLG_CONT_SEQ}</td>
+   </tr>
+   <tr>
+      <th>제목</th>
+      <td>${blogCont.TITLE}</td>
+   </tr>
+   <tr>
+      <th>본문</th>
+      <td>
+      ${fn:replace(blogCont.CONT_BDY, CRLF, '<br/>')}
+      </td>
+   </tr>
+   <tr>
+      <th>입력일</th>
+      <td>
+      <fmt:formatDate value="${blogCont.INSERT_DT}" pattern="yyyy.MM.dd HH:mm:ss"/>
+      </td>
+   </tr>
 </table>
 <form method="post" action="/delete">
 <input type="hidden" name="_method" value="delete"/>
@@ -47,14 +44,9 @@
 <input type="submit" value="삭제" name="delete_button" class="btn btn-outline-danger"/>
 </div>
 </form>
-
 </div>
 </div>
 </div>
 
 
-
-
-
-
-<jsp:include page="include/footer.jsp"></jsp:include>
+<jsp:include page="include/footer.jsp"/>

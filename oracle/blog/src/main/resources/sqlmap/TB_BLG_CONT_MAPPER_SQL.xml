@@ -6,4 +6,10 @@
 DELETE FROM TB_BLG_CONT WHERE BLG_CONT_SEQ = #{BLG_CONT_SEQ}
 ]]>
 </delete>
+<resultMap type="com.simple.blog.dto.BlogListResponseVO" id="selectListResultMap">
+<result column="BLG_CONT_SEQ" property="blgContSeq" jdbcType="INTEGER" javaType="int"/>
+<result column="TITLE" property="title" jdbcType="NVARCHAR" javaType="String"/>
+<result column="CONT_BDY" property="contBdy" jdbcType="NVARCHAR" javaType="String"/>
+<result column="INSERT_DT" property="insertDt" jdbcType="TIMESTAMP" javaType="java.time.LocalDateTime"/>
+</resultMap>
 </mapper>
