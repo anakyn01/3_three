@@ -1,6 +1,6 @@
 package generic;
 
-import generic.Person.Student;
+
 
 public class Course {
 

@@ -1,11 +1,11 @@
 package generic;
 
-public class Applicant<A> {
+public class Applicant<T> {
 
-	public A kind;
+	public T kind;
 	
 	//»ı¼ºÀÚ
-	public Applicant(A kind) {
+	public Applicant(T kind) {
 		this.kind = kind;
 	}
 }
