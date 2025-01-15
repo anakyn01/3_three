@@ -12,4 +12,12 @@ DELETE FROM TB_BLG_CONT WHERE BLG_CONT_SEQ = #{BLG_CONT_SEQ}
 <result column="CONT_BDY" property="contBdy" jdbcType="NVARCHAR" javaType="String"/>
 <result column="INSERT_DT" property="insertDt" jdbcType="TIMESTAMP" javaType="java.time.LocalDateTime"/>
 </resultMap>
+<select id="selectList" parameterType="com.simple.blog.dto.BlogListRequestVO" resultMap="selectListResultMap">
+<![CDATA[
+select BLG_CONT_SEQ, TITLE, TO_CHAR(CONT_BDY) as CONT_BDY, INSERT_DT from TB_BLG_CONT where 1 = 1
+]]>
+<if test="search != null">
+AND (TITLE LIKE '%' || #{search} || '%' or CONT_BDY LIKE '%' || #{search} '%')
+</if>
+</select>
 </mapper>

@@ -1,5 +1,6 @@
 package com.simple.blog;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.annotation.MapperScan;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.simple.blog.dto.BlogEditRequestVO;
+import com.simple.blog.dto.BlogListRequestVO;
+import com.simple.blog.dto.BlogListResponseVO;
 import com.simple.blog.service.BlogService;
 
 @Controller
@@ -84,6 +87,32 @@ return "redirect:/read/" + String.valueOf(blogContSeq);
 		return "redirect:/list";
 	}
 	
+	//list
+	@GetMapping("/list")
+	public String list(BlogListRequestVO blogListRequestVO, Model model) {
+		model.addAttribute("blogListRequestVO", blogListRequestVO);
+		List<BlogListResponseVO> blogListResponseVOList = this.blogService.list(blogListRequestVO);
+		model.addAttribute("blogListResponseVOList", blogListResponseVOList);
+		return "/list";
+	}
+	/*
+	서블릿 => 자바기반에서 웹 애플리케이션에서 서버 측에서 실행되는 프로그램
+	웹서버나 애플리케이션 서버에서 클라이언트(일반적으로 웹 브라우저)의 요청을 처리하고 그에 맞는 응답을 리턴하는 역활 
+	HTTP요청과 응답처리 => 서블릿은 doGet(), doPost() 등의 메서드를 통해서 HTTP요청을 처리합니다 
+	주로 GET요청과 POST요청을 처리하는 매서드가 사용됩니다
+	컨테이너 기반 실행 : 서블릿 컨테이너라고 불리는 환경에서 실행됩니다
+	이컨테이너는 서블릿의 생명주기를 관리하고 요청을 서블릿에 전달하는 역활을 한다
+	요청과 HttpServletRequest 응답객체 HttpServletResponse를 사용합니다
+	
+	1) 인스턴스화 : 처음 요청될때 서블릿 클래스가 인스턴스화 된다
+	2) 초기화(init() 메서드) : 인스턴스 생성된후 초기화 작업을 수행 
+	3) 서비스(service() ) : 요청이 올때마다 service()호출되어 처리
+	4) 소멸 (destroy()) : 서블릿이 더이상 필요하지 않을때 예를 해제
+	
+	reactjs
+	라이프 사이클
+	마운팅, 갱신, 언마운팅
+	*/
 	
 	
 	

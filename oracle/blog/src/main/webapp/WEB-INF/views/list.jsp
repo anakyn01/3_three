@@ -45,9 +45,13 @@ class="btn btn-outline-success"
 <tbody>
 <c:forEach var="blogListResponseVO" items="${blogListResponseVOList}">
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td>${blogListResponseVO.blgContSeq}</td><%--<% 스크립 틀릿 %><%= 익스프레션 %> el--%>
+<td>
+<a href="/read/${blogListResponseVO.blgContSeq}">
+${blogListResponseVO.title}
+</a>
+</td>
+<td>${blogListResponseVO.insertDtFormat}</td>
 </tr>
 </c:forEach>
 </tbody>

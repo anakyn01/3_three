@@ -1,5 +1,6 @@
 package com.simple.blog.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.simple.blog.dao.BlogDAO;
 import com.simple.blog.dto.BlogEditRequestVO;
+import com.simple.blog.dto.BlogListRequestVO;
+import com.simple.blog.dto.BlogListResponseVO;
 import com.simple.blog.mapper.BlogMapper;
 
 @Service
@@ -19,7 +22,7 @@ public class BlogServiceImpl implements BlogService {
 	생성자의 매개변수로 빈으로 관리되는 클래스를 정의하면
 	스프링이 빈 인스턴스를 생성하고 클래스를 생성할때 생성자의 매개변수로 전달을 해줍니다
 	*/
-	@Autowired
+	@Autowired//싱글톤 = 인스턴스를 하나만 생성해서 여러번 활용
 	public BlogServiceImpl(BlogDAO blogDAO, BlogMapper blogMapper) {
 		this.blogDAO = blogDAO;
 		this.blogMapper = blogMapper;
@@ -49,6 +52,13 @@ public class BlogServiceImpl implements BlogService {
 	public boolean delete(int blogContSeq) {
 		return this.blogMapper.delete(blogContSeq) > 0;
 		//삭제된 행의 수가 0보다 큰지 확인합니다 삭제가 성공한것임
+	}
+	
+	//list
+	@Override
+	public List<BlogListResponseVO> list(BlogListRequestVO blogListRequestVO){
+		List<BlogListResponseVO> result = this.blogMapper.selectList(blogListRequestVO);
+	    return result;
 	}
 	
 	
