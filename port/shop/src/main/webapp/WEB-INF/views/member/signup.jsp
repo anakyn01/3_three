@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!-- 아래 페이지 디렉티브 인클루드 -->
 <%@ include file="../include/header.jsp" %>
-
+<div class="container-fluid bg-gradient-primary2">
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-lg-12">
@@ -16,93 +16,110 @@
 <div class="col-lg-7">
 	<div class="p-5">
 		<div class="text-center">
-<h1 class="">
+<h1 class="h4 text-gray-900 mb-4">
 회원가입
 </h1>
-<form method="post">
-<div class="">
+<form method="post" class="was-validated">
+<div class="mb-4">
 <input
 type="text"
 placeholder="id"
 name="userId"
+class="form-control form-control-user"
+required="required"
 />
 </div>
 
-<div class="">
+<div class="mb-4">
 <input
 type="password"
 placeholder="pw"
 name="userPass"
+class="form-control form-control-user"
+required="required"
 />
 </div>
 
-<div class="">
+<div class="mb-4">
 <input
 type="password"
 placeholder="pwre"
 name="userPassRe"
+class="form-control form-control-user"
+required="required"
 />
 </div>
 
-<div class="">
+<div class="mb-4">
 <input
 type="text"
 placeholder="name"
 name="userName"
+class="form-control form-control-user"
+required="required"
 />
 </div>
 
-<div class="">
+<div class="mb-4">
 <input
 type="text"
 placeholder="email"
 name="userEmail"
+class="form-control form-control-user"
+required="required"
 />
 </div>
 
-<div class="">
+<div class="mb-4">
 <input
 type="text"
 placeholder="hp"
 name="userPhone"
+class="form-control form-control-user"
+required="required"
 />
 </div>
 
-<div class="">
+<div class="mb-4">
 <label class="form-label">주소</label>
+<div class="d-flex">
 <input
 type="text"
 placeholder="주소를 검색하세요"
 name="userAddr1"
 readonly="readonly"
+class="form-control form-control-user address_input_1 w-75"
 />
-<a class="" onclick="go_daum_address()">주소찾기</a>
+<a class="btn btn-outline-primary border-radius-top-right-sm w-25" onclick="go_daum_address()">주소찾기</a>
+</div>
 </div>
 
-<div class="">
+<div class="mb-4">
 <input
 type="text"
 placeholder=""
 name="userAddr2"
 readonly="readonly"
+class="form-control form-control-user address_input_2"
 />
 </div>
 
-<div class="">
+<div class="mb-4">
 <input
 type="text"
 placeholder=""
 name="userAddr3"
 readonly="readonly"
+class="form-control form-control-user address_input_3"
 />
 </div>
 
-<div class="">
+<div class="mb-4">
 	<div class="btn-group">
-		<label>
+		<label class="btn border-0 active">
 			<input type="radio" name="userGender" value="남자" autocomplete="off" checked>남자
 		</label>
-		<label>
+		<label class="btn border-0">
 			<input type="radio" name="userGender" value="여자" autocomplete="off">여자
 		</label>
 	</div>
@@ -115,6 +132,14 @@ class="btn btn-primary btn-user btn-block "
 value="회원가입"
 />
 </div>
+
+<p class="mb-3">
+   <a href="https://kauth.kakao.com/oauth/authorize?client_id={REST_API_KEY}&redirect_uri={REDIRECT_URI}&response_type=code" class="btn btn-kakao btn-user btn-block">
+      <i class="fab fa-google fa-fw w-100">
+      코코아톡으로 회원가입
+      </i>
+   </a>
+</p>
 
 <div class="mb-3">
 <a class="small" href="/member/forgot.jsp">Forgot Password?</a>
@@ -134,5 +159,5 @@ value="회원가입"
 		</div>	
 	</div>
 </div>
-
+</div>
 <jsp:include page="../include/footer.jsp" flush="false"/>

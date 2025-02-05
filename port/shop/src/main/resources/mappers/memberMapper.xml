@@ -11,9 +11,6 @@ values
 (#{userId}, #{userPass}, #{userPassRe}, #{userName}, #{userPhone}, #{userEmail}, #{userGender}, #{userAddr1}, #{userAddr2}, #{userAddr3}, #{verify})
 ]]>
 </insert>
-</mapper>
-<!-- 
-
 <select id="signin" resultType="com.my.shop.vo.MemberVO">
 <![CDATA[
 select userId, userPass, userPassRe, userName, userPhone, userEmail, userGender, userAddr1, userAddr2, userAddr3, verify
@@ -21,4 +18,8 @@ from
 tbl_member where userId = #{userId}
 ]]>
 </select>
+</mapper>
+<!-- 
+
+
  -->

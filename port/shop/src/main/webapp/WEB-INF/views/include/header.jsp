@@ -9,11 +9,11 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
+<link rel="stylesheet" href="${contextPath}/resources/css/style.css"/>
 <meta charset="UTF-8">
 <title>=== SHOP ===</title>
 </head>
-<body>
+<body class="">
 <nav class="navbar navbar-expand-sm bg-light">
 <div class="container-fluid">
 <a class="navbar-brand" href="/">Shop</a>
