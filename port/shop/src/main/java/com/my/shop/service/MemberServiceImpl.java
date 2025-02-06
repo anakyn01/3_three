@@ -19,16 +19,15 @@ public class MemberServiceImpl implements MemberService {
 		dao.signup(vo);
 
 	}
-
+//로그인
 	@Override
 	public MemberVO signin(MemberVO vo) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.signin(vo);
 	}
-
+//로그아웃
 	@Override
 	public void signout(HttpSession session) throws Exception {
-		// TODO Auto-generated method stub
+session.invalidate();//세션 정보를 제거
 		
 	}
 
