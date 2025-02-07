@@ -68,6 +68,7 @@ public class MemberController {
 	@PostMapping("/signin")
 	public String postSignin(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr)throws Exception{
 		logger.info("post signin");
+		System.out.println("vo : " + vo);
 		
 		MemberVO login = service.signin(vo);//로그인 처리를 위한 서비스 호출
 		//signin(vo)는 사용자 입력값에 맞는 회원 정보를 데이터베이스에서 가져 오는 역활을 합니다
@@ -76,6 +77,7 @@ public class MemberController {
 //로그인된 사용자 정보를 세션에 저장하기 위해 사용됩니다.
 boolean passMatch = passEncoder.matches(vo.getUserPass(), login.getUserPass());
 //DB의 비밀번호와 입력된 비밀번호를 비교
+System.out.println("login : " + login);
 if(login != null && passMatch) {//아이디가 존재하고(!= null) 비밀번호가 맞으면(PassMatch = true)
 	//맴버세션에 로그인 정보를 부여
 	session.setAttribute("member", login);	

@@ -5,3 +5,7 @@
 <configuration>
 
 </configuration>
+<!-- 
+SQL세션을 설정하기 위한 Mybatis구성을 로드.
+
+ -->

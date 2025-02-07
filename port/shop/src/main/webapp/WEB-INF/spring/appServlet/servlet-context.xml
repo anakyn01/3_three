@@ -22,6 +22,27 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.my.shop" />
+	<!-- 인터셉터 -->
+<beans:bean id="AdminInterceptor" class="com.my.shop.interceptor.AdminInterceptor"/>
+	<interceptors>
+	<interceptor>
+		<mapping path="/admin/**"/>
+		<beans:ref bean="AdminInterceptor"/>
+	</interceptor>
+</interceptors>	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

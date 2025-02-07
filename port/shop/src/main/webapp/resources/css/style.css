@@ -44,9 +44,21 @@ html body .btn-user {
 html body .btn-block {
   display: block;
   width: 100%;
-}
+}s
 html body .bg-register-image {
   background: url("../images/3.jpg");
   background-position: center;
   background-size: cover;
+}
+html body .btn-google {
+  color: #fff;
+  background-color: #ea4335;
+}
+html body .btn-facebook {
+  color: #fff;
+  background-color: #3b5998;
+}
+html body .btn-kakao {
+  color: #000;
+  background-color: #fee500;
 }/*# sourceMappingURL=style.css.map */
