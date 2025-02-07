@@ -25,6 +25,11 @@ public class AdminController {
 		logger.info("관리자 화면 진입");
 	}
 	
+	//상품등록
+	@GetMapping("/goods/register")
+	public void getGoodsRegister() throws Exception{
+		logger.info("상품등록 페이지 진입");
+	}
 	
 	
 	

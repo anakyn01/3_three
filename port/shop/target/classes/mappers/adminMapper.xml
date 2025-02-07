@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.shop.mappers.adminMapper">
+<!-- 카테고리 호출 -->
+<select id="category" resultType="com.my.shop.vo.CategoryVO">
+<![CDATA[
+select
+level, cateName, cateCode, cateCodeRef
+from goods_category
+start with cateCodeRef is null connect by prior cateCode = cateCoderef
+]]>
+</select>
+</mapper>
+<!-- 
+start with cateCodeRef is null => 계층적구조에 시작점
+connect by prior cateCode = cateCoderef => 부모범주가 이전레벨(현재범주)와 일치하는지 재귀적으로 찾도록 지시
+ -->
