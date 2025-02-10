@@ -1,12 +1,13 @@
-package com.my.shop.service;
+package com.my.shop.persistence;
 
 import java.util.List;
 
 import com.my.shop.vo.CategoryVO;
 
-//dao를 호출하는 서비스를 생성합니다
-public interface AdminService {
-
+//매퍼의 쿼리문을 호출하는 dao
+public interface AdminDAO {
+	
 	//카테고리
 	public List<CategoryVO> category() throws Exception;
+
 }
