@@ -19,7 +19,7 @@ public class CategoryVO {
 	public void setCateCode(String cateCode) {this.cateCode = cateCode;}
 	public void setCateCodeRef(String cateCodeRef) {this.cateCodeRef = cateCodeRef;}
 	public void setLevel(int level) {this.level = level;}
-	
+
 	
 
 }
