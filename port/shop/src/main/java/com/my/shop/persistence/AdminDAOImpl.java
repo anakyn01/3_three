@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.my.shop.vo.CategoryVO;
 import com.my.shop.vo.GoodsVO;
+import com.my.shop.vo.GoodsViewVO;
 
 @Repository
 public class AdminDAOImpl implements AdminDAO {
@@ -29,6 +30,11 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public void register(GoodsVO vo) throws Exception {
 		sql.insert(namespace + ".register", vo);
+	}
+
+	@Override//list
+	public List<GoodsViewVO> goodslist() throws Exception {
+		return sql.selectList(namespace + ".goodslist");
 	}
 
 }

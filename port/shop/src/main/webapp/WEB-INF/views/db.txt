@@ -29,6 +29,7 @@ gdsPrice number not null,
 gdsStock number not null,
 gdsDes varchar2(500) not null,
 gdsImg varchar2(500) not null,
+gdsThumbImg varchar2(500) not null,
 gdsDate date default sysdate
 );
 

@@ -19,6 +19,31 @@ values
 (seq_gdsNum.nextval, #{gdsName}, #{cateCode}, #{gdsPrice}, #{gdsStock}, #{gdsDes}, #{gdsImg}, #{gdsThumbImg})
 ]]>
 </insert>
+<!-- 상품목록 -->
+<select id="goodslist" resultType="com.my.shop.vo.GoodsVO">
+<![CDATA[
+select
+gdsNum, gdsName, cateCode, gdsPrice, gdsStock, gdsDes, gdsImg, gdsThumbImg, gdsDate
+from tbl_goods
+order by gdsNum desc
+]]>
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </mapper>
 <!-- 
 start with cateCodeRef is null => 계층적구조에 시작점

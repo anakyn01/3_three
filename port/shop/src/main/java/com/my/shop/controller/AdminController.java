@@ -19,6 +19,7 @@ import com.my.shop.service.AdminService;
 import com.my.shop.utils.UploadFileUtils;
 import com.my.shop.vo.CategoryVO;
 import com.my.shop.vo.GoodsVO;
+import com.my.shop.vo.GoodsViewVO;
 
 import net.sf.json.JSONArray;
 
@@ -80,6 +81,14 @@ vo.setGdsThumbImg(File.separator + "imgUpload" + ymdPath + File.separator +"s"+F
 		adminService.register(vo);
 		
 		return "redirect:/admin/index";
+	}
+	
+	//상품 목록
+	@GetMapping(value="/goods/list")
+	public void getGoodsList(Model model) throws Exception{
+logger.info("상품 리스트 출력");
+List<GoodsViewVO>list = adminService.goodslist();// GoodsVO형태의 List형 변수 list 선언
+model.addAttribute("list",list);
 	}
 	
 	

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.my.shop.persistence.AdminDAO;
 import com.my.shop.vo.CategoryVO;
 import com.my.shop.vo.GoodsVO;
+import com.my.shop.vo.GoodsViewVO;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -26,6 +27,12 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void register(GoodsVO vo) throws Exception {
 		dao.register(vo);
+	}
+
+	//상품리스트
+	@Override
+	public List<GoodsViewVO> goodslist() throws Exception {
+		return dao.goodslist();
 	}
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.my.shop.vo.CategoryVO;
 import com.my.shop.vo.GoodsVO;
+import com.my.shop.vo.GoodsViewVO;
 
 //매퍼의 쿼리문을 호출하는 dao
 public interface AdminDAO {
@@ -13,5 +14,8 @@ public interface AdminDAO {
 	
 	//상품등록
 	public void register(GoodsVO vo) throws Exception;
+	
+	//상품리스트
+	public List<GoodsViewVO> goodslist() throws Exception;
 
 }

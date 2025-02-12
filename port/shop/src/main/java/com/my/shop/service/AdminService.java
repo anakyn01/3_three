@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.my.shop.vo.CategoryVO;
 import com.my.shop.vo.GoodsVO;
+import com.my.shop.vo.GoodsViewVO;
 
 //dao를 호출하는 서비스를 생성합니다
 public interface AdminService {
@@ -13,4 +14,7 @@ public interface AdminService {
 	
 	//상품등록
 	public void register(GoodsVO vo) throws Exception;
+	
+	//상품목록
+	public List<GoodsViewVO> goodslist() throws Exception;
 }
