@@ -31,14 +31,18 @@ order by gdsNum desc
 <select id="goodsView" resultType="com.my.shop.vo.GoodsViewVO">
 <![CDATA[
 select
-
+gdsNum, gdsName, g.cateCode, c.cateCodeRef, c.cateName, gdsPrice, gdsStock, gdsDes, gdsImg, gdsDate
 from tbl_goods g
 inner join goods_category c
+on g.cateCode = c.cateCode
+where gdsNum = #{gdsNum}
 ]]>
 </select>
 <!-- 
 Join : 두개 이상의 테이블에서 관련 열을 기준으로 행을 결합할때 사용
 내부 조인[INNER JOIN] : 두 테이블에서 일치하는 값을 갖는 레코드를 선택
+on g.cateCode = c.cateCode g테이블과 c테이블의 값이 같을때 두테이블의 데이터를 결합
+
 왼쪽 조인[LEFT JOIN] : 왼쪽 테이블의 모든 레코드와 오른쪽 테이블에 일치하는 레코드를 리턴
 오른쪽 조인[RIGHT JOIN]: 오른쪽 테이블의 모든 레코드와 왼쪽 테이블에 일치하는 레코드를 리턴
 전체[FULL]:왼쪽 오른쪽 테이블 레코드에 일치하는 항목이 있을 경우 모든레코드 리턴

@@ -37,4 +37,9 @@ public class AdminDAOImpl implements AdminDAO {
 		return sql.selectList(namespace + ".goodslist");
 	}
 
+	@Override//view
+	public GoodsViewVO goodsView(int gdsNum) throws Exception {
+		return sql.selectOne(namespace + ".goodsView", gdsNum);
+	}
+
 }

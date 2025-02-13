@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.my.shop.service.AdminService;
@@ -90,6 +91,18 @@ logger.info("상품 리스트 출력");
 List<GoodsViewVO>list = adminService.goodslist();// GoodsVO형태의 List형 변수 list 선언
 model.addAttribute("list",list);
 	}
+	
+//상품조회 1)리스트에서 리스트 글들중에 제목을 선택하는데 그제목에 해당글에 순번이 랩핑 2)랩핑된걸로 요청 3)순번에 맞는 read page 보여줌
+	@GetMapping(value="/goods/view")
+	public void getGoodsview(@RequestParam("n") int gdsNum, Model model)throws Exception{
+logger.info("상세페이지");
+//리턴시킬 변수 정의
+GoodsViewVO goods = adminService.goodsView(gdsNum);
+model.addAttribute("goods", goods);
+
+	}
+	
+	
 	
 	
 	

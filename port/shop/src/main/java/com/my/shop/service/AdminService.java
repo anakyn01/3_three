@@ -17,4 +17,15 @@ public interface AdminService {
 	
 	//상품목록
 	public List<GoodsViewVO> goodslist() throws Exception;
+	
+	//상품조회
+	public GoodsViewVO goodsView(int gdsNum) throws Exception;
+	
+	
+	
+	
+	
+	
+	
+	
 }
