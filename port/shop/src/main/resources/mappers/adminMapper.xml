@@ -28,7 +28,27 @@ from tbl_goods
 order by gdsNum desc
 ]]>
 </select>
+<select id="goodsView" resultType="com.my.shop.vo.GoodsViewVO">
+<![CDATA[
+select
 
+from tbl_goods g
+inner join goods_category c
+]]>
+</select>
+<!-- 
+Join : 두개 이상의 테이블에서 관련 열을 기준으로 행을 결합할때 사용
+내부 조인[INNER JOIN] : 두 테이블에서 일치하는 값을 갖는 레코드를 선택
+왼쪽 조인[LEFT JOIN] : 왼쪽 테이블의 모든 레코드와 오른쪽 테이블에 일치하는 레코드를 리턴
+오른쪽 조인[RIGHT JOIN]: 오른쪽 테이블의 모든 레코드와 왼쪽 테이블에 일치하는 레코드를 리턴
+전체[FULL]:왼쪽 오른쪽 테이블 레코드에 일치하는 항목이 있을 경우 모든레코드 리턴
+셀프[self]:테이블 자체가 자체적으로 조인됩니다
+
+별칭 tbl_goods.gdsNum 간단한 별칭 g.gdsNum
+
+import numpy as np
+xpoint = numpy.array([0, 6])
+ -->
 
 
 
