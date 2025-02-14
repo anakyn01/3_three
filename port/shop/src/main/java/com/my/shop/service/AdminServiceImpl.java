@@ -40,4 +40,15 @@ public class AdminServiceImpl implements AdminService {
 		return dao.goodsView(gdsNum);
 	}
 
+	@Override
+	public void goodsModify(GoodsVO vo) throws Exception {
+	dao.goodsModify(vo);		
+	}
+
+	@Override
+	public void goodsDelete(int gdsNum) throws Exception {
+		dao.goodsDelete(gdsNum);
+		
+	}
+
 }

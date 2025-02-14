@@ -21,6 +21,11 @@ public interface AdminService {
 	//상품조회
 	public GoodsViewVO goodsView(int gdsNum) throws Exception;
 	
+	//상품수정
+	public void goodsModify(GoodsVO vo) throws Exception;
+	
+	//상품삭제
+	public void goodsDelete(int gdsNum) throws Exception;
 	
 	
 	

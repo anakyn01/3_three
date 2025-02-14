@@ -1,10 +1,17 @@
 package com.my.shop.controller;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -102,6 +109,50 @@ model.addAttribute("goods", goods);
 
 	}
 	
+	//ck에디터에서 파일 업로드
+@PostMapping(value="/goods/ckUpload")
+public void postCKEditorImgUpload(HttpServletRequest req, HttpServletResponse res, @RequestParam MultipartFile upload)throws Exception{
+	logger.info("우리가 개발했지만 ck에디터에 첨부파일에 등록을 하고싶다면 이메소드를 사용하세요");
+	//랜덤문자 생성
+	UUID uid = UUID.randomUUID();
+	
+	OutputStream out = null;
+	PrintWriter printWriter = null;//태그나 스크립트를 자바구문에서 사용할때
+	
+	//태그를 작성하고 한글이 나올때는 한글깨짐을 방지하기 위해서 아래를 사용
+	res.setCharacterEncoding("utf-8");
+	res.setContentType("text/html; charset=utf-8");
+	
+	try {
+String fileName = upload.getOriginalFilename(); //파일 이름 가져오기
+byte[] bytes = upload.getBytes();
+//업로드 경로
+String ckUploadPath = uploadPath + File.separator + "ckUpload" + File.separator + uid + "_" + fileName;
+out = new FileOutputStream(new File(ckUploadPath));
+out.write(bytes);
+out.flush();//out에 저장된 데이터를 전송하고 초기화
+
+String callback = req.getParameter("CKEditorFuncNum");
+printWriter = res.getWriter();
+String fileUrl = "/ckUpload/" + uid + "_" +fileName;//작성 화면
+//업로드시 메세지 출력
+printWriter.println("<script> "
++ "window.parent.CKEDITOR.tools.callFunction("
++ callback +",'"+ fileUrl +"','이미지를 업로드 하였습니다')"
++ "</script>");
+printWriter.flush();
+	}catch(IOException e) {
+		e.printStackTrace();
+	}finally {
+		try {
+if(out != null) {out.close();}
+if(printWriter != null) {printWriter.close();}
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	return;	
+}
 	
 	
 	
