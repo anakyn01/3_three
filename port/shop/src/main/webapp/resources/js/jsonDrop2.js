@@ -58,3 +58,36 @@ cate2Select.append("<option value='"+ cate2Arr[i].cateCode +"'>" + cate2Arr[i].c
 		}
 	});
 });
+
+//add
+var select_cateCode = "${goods.cateCode}";
+var select_cateCodeRef = "${goods.cateCodeRef}";
+var select_cateName = "${goods.cateName}";
+
+//이럴때 확인차 console..
+console.log("select_cateCode = " + select_cateCode);
+console.log("select_cateCodeRef = " + select_cateCodeRef);
+
+if(select_cateCodeRef != null && select_cateCodeRef != ""){
+//select_cateCodeRef 비어있는 문자열도 아니고 여백문자열도 아닌지 확인합니다 유효한 카테고리 참조가 가능하다고 가정합니다
+	$(".category1").val(select_cateCodeRef);
+	$(".category2").val(select_cateCode);
+	$(".category2").children().remove();//전체
+	$(".category2").append("<option value='"+select_cateCode+"'>" + select_cateName + "</option>");	
+}else{//참조하려는 상위가 없기 때문에 2차 카테고리가 없다
+	$(".category1").val(select_cateCode);
+	$(".category2").append("<option value='"+select_cateCode+"' selected='selected'>전체</option>");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

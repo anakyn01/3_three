@@ -14,7 +14,7 @@
 </div>
 <div class="w-75 p-5">
 <h1 class="my-5">view</h1>
-<form method="post">
+<form role="form" method="post" autocomplete="off"><!-- jquery나 ajax일때는 method form 적지 말것 -->
 <input type="hidden" name="n" value="${goods.gdsNum}"/>
 <!-- 카테고리 -->
 <div class="input-group">
@@ -55,11 +55,13 @@
 <div class="btn-group">
 <button id="modify_Btn" class="btn btn-warning">수정</button>
 <button id="delete_Btn" class="btn btn-danger">삭제</button>
-</div>
-</div>
+
 <script src="${contextPath}/resources/js/viewjs_01.js"></script>
-<!-- 무리가 없는한 자바스크립트나 jquery는 linking으로 -->
+</div>
+</div>
 </form>
+<!-- 무리가 없는한 자바스크립트나 jquery는 linking으로 -->
+
 </div>
 </div>
 </div>

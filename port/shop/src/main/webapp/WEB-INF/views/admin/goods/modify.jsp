@@ -18,7 +18,7 @@
 
 <!-- 카테고리 -->
 <div class="input-group">
-<label class="form-label fw-bold">1차 분류류
+<label class="form-label fw-bold">1차 분류
     <select name="" id="" class="form-select category1">
         <option value="">전체</option>
     </select>
@@ -28,7 +28,7 @@
 <div class="input-group">
     <label class="form-label fw-bold">2차 분류
         <select name="cateCode" id="" class="form-select category2">
-            <option value="">전체</option>
+            <option value="">전체</option><!-- child -->
         </select>
     </label>
 </div>
@@ -64,18 +64,8 @@
         <input type="hidden" name="gdsImg" value="${goods.gdsImg}"/>
         <input type="hidden" name="gdsThumbImg" value="${goods.gdsThumbImg}"/>
     </div>
-    <script>
-        //해당 셀렉터 값이 변경될경우 변화를 캐치하는 이벤트
-$('#gdsImg').change(function(){
-    if(this.files && this.files[0]){
-        var reader = new FileReader();
-        reader.onload=function(data){
-            $(".select_img img").attr("src", data.target.result).width(300);
-        }
-        reader.readAsDataURL(this.files[0]);
-    }
-})        
-    </script>
+<script src="${contextPath}/resources/js/changeImgFunction.js">       
+</script>
 <div class=""><%=request.getRealPath("/")%></div>
 
 </div>
@@ -87,13 +77,12 @@ $('#gdsImg').change(function(){
 <button type="submit" id="back_Btn" class="btn btn-secondary">취소</button>
     </div>
 </div>
-<script>
-$('#back_Btn').click(function(){
-    location.href="/admin/goods/view?n"+${goods.gdsNum};
-    //history.back();
-})
+<script src="${contextPath}/resources/js/backBtn.js">
 </script>
-<script src=""></script>
+<script>
+let jsonData = JSON.parse('${category}');
+</script>
+<script src="${contextPath}/resources/js/jsonDrop2.js"></script>
 
 
 </form>

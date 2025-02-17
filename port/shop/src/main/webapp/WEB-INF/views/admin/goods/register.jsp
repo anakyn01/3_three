@@ -73,6 +73,9 @@
 등록
 </button>
 </form>
+<script>
+let jsonData = JSON.parse('${category}');
+</script>
 <script src="${contextPath}/resources/js/jsonDrop.js"><!--2개의 드롭다운으로 카테고리를 선택할때 json으로 오라클에db 카테고리를 선택-->
 </script>
 </div>

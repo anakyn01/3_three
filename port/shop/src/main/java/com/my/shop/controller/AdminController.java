@@ -109,7 +109,7 @@ model.addAttribute("goods", goods);
 
 	}
 	
-	//ck에디터에서 파일 업로드
+//ck에디터에서 파일 업로드
 @PostMapping(value="/goods/ckUpload")
 public void postCKEditorImgUpload(HttpServletRequest req, HttpServletResponse res, @RequestParam MultipartFile upload)throws Exception{
 	logger.info("우리가 개발했지만 ck에디터에 첨부파일에 등록을 하고싶다면 이메소드를 사용하세요");
@@ -153,7 +153,55 @@ if(printWriter != null) {printWriter.close();}
 	}
 	return;	
 }
+
+
+//상품수정 1)수정할 글을 불러온다 2)그 순번에 맞는 글을 수정한다
+@GetMapping(value="/goods/modify")
+public void getGoodsModify(@RequestParam("n") int gdsNum, Model model) throws Exception{
+//@RequestParam("n")으로 인해, URL주소에 있는 n의 값을 가져와 gdsNum에 저장
+	logger.info("수정페이지 진입");
+	//GoodsViewVO변수에 goods상품정보를 저장
+	GoodsViewVO goods = adminService.goodsView(gdsNum);
+	model.addAttribute("goods",goods);
+	//카테고리 내용을 가져와야 함
+	List<CategoryVO> category = null;
+	category = adminService.category();
+	model.addAttribute("category", JSONArray.fromObject(category));
 	
+}
+
+//실제적으로 상품 내용을 수정 변수 상품을 수정하는데 기존이미지를 수정할수도 있고 그대로 사용할수도 있음
+@PostMapping(value="/goods/modify")
+public String postGoodsModify(GoodsVO vo, MultipartFile file, HttpServletRequest req) throws Exception{
+	logger.info("상품 수정");
+	//새로운 파일이 등록되었는지 확인
+	if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+		//1)기존 파일을 삭제 (이미지와 썸이미지를 둘다삭제)
+		new File(uploadPath + req.getParameter("gdsImg")).delete();
+		new File(uploadPath + req.getParameter("gdsThumbImg")).delete();
+		//2)새로 첨부한 파일을 등록
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);
+vo.setGdsImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+//2025\02\17\666cccc-nnnn-.jpg
+vo.setGdsThumbImg(File.separator+ "imgUpload" + ymdPath + File.separator+ "s"+File.separator +"s_"+ fileName);
+//2025\02\17\s\s_666cccc-nnnn-.jpg
+	}else {//새로운 파일이 등록되지 않았다면 기존 이미지를 그대로 사용
+vo.setGdsImg(req.getParameter("gdsImg"));
+vo.setGdsThumbImg(req.getParameter("gdsThumbImg"));
+	}
+	adminService.goodsModify(vo);
+	return "redirect:/admin/index";
+}
+
+//상품삭제
+@PostMapping(value="/goods/delete")
+public String postGoodsDelete(@RequestParam("n") int gdsNum) throws Exception{
+	logger.info("상품삭제");
+	adminService.goodsDelete(gdsNum);
+	return "redirect:/admin/index";
+}
 	
 	
 	
