@@ -44,7 +44,7 @@ public class AdminDAOImpl implements AdminDAO {
 
 	@Override//modify
 	public void goodsModify(GoodsVO vo) throws Exception {
-		sql.update(namespace + ".goodsModify",vo);
+		sql.update(namespace + ".goodsModify", vo);
 		
 	}
 

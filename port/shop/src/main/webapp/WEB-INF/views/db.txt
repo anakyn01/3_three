@@ -42,3 +42,35 @@ primary key(cateCode),
 foreign key(cateCodeRef) references goods_category(cateCode)
 다른카테고리를 참조하는 부모자식관계를 형성
 );
+
+
+댓글테이블
+create table tbl_reply(
+gdsNum number not null,
+userId varchar2(50) not null,
+repNum number not null,
+repCon varchar2(2000) not null,
+repDate date default sysdate,
+primary key(gdsNum, repNum)
+);
+create sequence seq_tbl_reply;
+
+alter table tbl_reply
+add constraint tbl_reply_gdsNum foreign key(gdsNum)
+references tbl_goods(gdsNum);
+
+alter table tbl_reply
+add constraint tbl_reply_userId foreign key(userId)
+references tbl_member(userId);
+
+
+
+
+
+
+
+
+
+
+
+
