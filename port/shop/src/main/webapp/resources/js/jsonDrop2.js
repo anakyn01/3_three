@@ -1,3 +1,4 @@
+
 var cate1Arr = new Array();
 var cate1Obj = new Object();
 

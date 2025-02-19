@@ -16,7 +16,7 @@
 <div class="w-75 p-3">
 <!-- 내용 -->
 <h2 class="my-3 text-white">상품목록</h2>
-<table class="table table-hover">
+<table class="table table-dark table-hover">
 <colgroup>
 <col width="5%"/>
 <col width="10%"/>
@@ -38,7 +38,7 @@
 <td class="text-center">${list.gdsNum}</td>
 <td><img src="${list.gdsThumbImg}" class="thumb img-thumbnail"/></td>
 <td>
-<a href="/admin/goods/view?n=${list.gdsNum}">
+<a href="/admin/goods/view?n=${list.gdsNum}" class="text-white">
 <!-- 제목을 클릭할때 맞는 순번 상품순서로 view page-->
 ${list.gdsName}<!-- 제목 -->
 </a>

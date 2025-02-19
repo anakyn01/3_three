@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.shop.mappers.shopMapper">
+<select id="list_1" resultType="com.my.shop.vo.GoodsViewVO">
+<![CDATA[
+select
+g.gdsNum, g.gdsName, g.cateCode, c.cateCodeRef, c.cateName, gdsPrice, gdsStock, gdsDes, gdsDate, g.gdsImg, g.gdsThumbImg
+from tbl_goods g
+inner join goods_category c
+on g.cateCode = c.cateCode
+where g.cateCode = #{cateCode}
+or c.cateCodeRef = #{cateCodeRef}
+]]>
+</select>
+<select id="list_2" resultType="com.my.shop.vo.GoodsViewVO">
+<![CDATA[
+select
+g.gdsNum, g.gdsName, g.cateCode, c.cateCodeRef, c.cateName, gdsPrice, gdsStock, gdsDes, gdsDate, g.gdsImg, g.gdsThumbImg
+from tbl_goods g
+inner join goods_category c
+on g.cateCode = c.cateCode
+where g.cateCode = #{cateCode}
+or c.cateCodeRef = #{cateCodeRef}
+]]>
+</select>
+<!-- 
+소비자가 보는 페이지를 최초리스트를 만듬
+- 특징 -
+카테고리 별로 분류가 되어야 한다 (군을 설정함 level 1depth[맥런치] 2depth[메뉴])
+리스트를 2단계로 표현해야 합니다
+조인을 실행
+군을 설정해서 내비게이션에서 클릭할때 그 군에 상품만 보여줘야 된다
+ -->
+</mapper>
+<!-- 
+
+
+ -->

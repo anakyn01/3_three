@@ -16,17 +16,23 @@
 <form role="form" method="post" enctype="multipart/form-data">
 <input type="hidden" name="gdsNum" value="${goods.gdsNum}"/>
 
+<div class="d-flex my-3">
+	<div class="text-white">기등록 카테고리</div>
+	<div class="text-white mx-3">${goods.cateName}</div>
+	<div class="text-white mx-3">${goods.cateCode}</div>
+</div>
+
 <!-- 카테고리 -->
 <div class="d-flex">
 	<label class="form-label fw-bold text-white">1차 분류
 	    <select name="cateName" id="" class="form-select category1">
-	        <option value="">${goods.cateName }</option>
+	        <option value="${goods.cateName}" selected>${goods.cateName}</option>
 	    </select>
 	</label>
 
 	    <label class="form-label fw-bold mx-3 text-white">2차 분류
 	        <select name="cateCode" id="" class="form-select category2">
-	            <option value="">${goods.cateCode }</option><!-- child -->
+	            <option value="${goods.cateCode}" selected>${goods.cateCode}</option><!-- child -->
 	        </select>
 	    </label>
 </div>
@@ -80,8 +86,8 @@
 </div>
 <script src="${contextPath}/resources/js/backBtn.js">
 </script>
-<script>
-let jsonData = JSON.parse('${category}');
+<script type="text/javascript">
+var jsonData = JSON.parse('${category}');
 </script>
 <script src="${contextPath}/resources/js/jsonDrop2.js"></script>
 <!-- <script src="${contextPath}/resources/js/jsonDrop.js"></script> -->

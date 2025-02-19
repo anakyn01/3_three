@@ -31,11 +31,12 @@ order by gdsNum desc
 <select id="goodsView" resultType="com.my.shop.vo.GoodsViewVO">
 <![CDATA[
 select
-gdsNum, gdsName, g.cateCode, c.cateCodeRef, c.cateName, gdsPrice, gdsStock, gdsDes, gdsImg, gdsDate
+g.gdsNum, g.gdsName, g.cateCode, c.cateCodeRef, c.cateName, gdsPrice, gdsStock, gdsDes, gdsImg, gdsDate,
+g.gdsImg, g.gdsThumbImg
 from tbl_goods g
 inner join goods_category c
-on g.cateCode = c.cateCode
-where gdsNum = #{gdsNum}
+on g.cateCode = c.cateCode            
+where g.gdsNum = #{gdsNum}
 ]]>
 </select>
 <update id="goodsModify">

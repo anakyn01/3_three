@@ -11,7 +11,7 @@
 <jsp:include page="include/lnb.jsp"/>
 </div>
 <div class="w-90">
-<!-- 내용 -->
+<jsp:include page="include/log.jsp"/>
 </div>
 </div>
 </div>
