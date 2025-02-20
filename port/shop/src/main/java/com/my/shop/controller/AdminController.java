@@ -168,6 +168,10 @@ public void getGoodsModify(@RequestParam("n") int gdsNum, Model model) throws Ex
 	category = adminService.category();
 	model.addAttribute("category", JSONArray.fromObject(category));
 	
+	//add
+	List<CategoryVO> categoryVO = adminService.category();
+	model.addAttribute("categoryVO", categoryVO);
+	
 }
 
 //실제적으로 상품 내용을 수정 변수 상품을 수정하는데 기존이미지를 수정할수도 있고 그대로 사용할수도 있음

@@ -10,20 +10,18 @@
 <div class="mt-1"></div>
 <jsp:include page="../include/lnb.jsp"/>
 </div>
-<div class="w-75">
+<div class="w-75 p-4">
 <h2 class="my-3 text-white">상품등록</h2>
 <form method="post" enctype="multipart/form-data"><!-- 이미지나 다른 파일을 등록할때  -->
 <div class="input-group">
 <label class="form-label text-white">1차 분류</label>
-<div class="w-5"></div>
-<select class="form-select category1">
+<select class="form-select category1 mx-3">
 <option value="">
 전체
 </option>
 </select>
-<div class="w-5"></div>
 <label class="form-label text-white">2차 분류</label>
-<select class="form-select category2" name="cateCode">
+<select class="form-select category2 mx-3" name="cateCode">
 <option value="">
 전체
 </option>
@@ -47,7 +45,7 @@
 
 <div class="input-group mt-5">
 <label class="form-label text-white w-10">상품소개</label>
-<textarea rows="5" id="gdsDes" name="gdsDes" class="form-control w-90" required>내용을 적어주세요</textarea>
+<textarea rows="5" id="gdsDes" name="gdsDes" class="form-control" required>내용을 적어주세요</textarea>
 <script src="${contextPath}/resources/js/ckeditorConfig.js">
 </script>
 </div>
@@ -69,7 +67,7 @@
 </div>
 <script src="${contextPath}/resources/js/changeImgFunction.js"></script>
 <div class="text-white"><%=request.getRealPath("/") %></div>
-<button type="submit" id="register_Btn" class="btn btn-outline-warning btn-block">
+<button type="submit" id="register_Btn" class="btn btn-warning btn-lg btn-block my-4">
 등록
 </button>
 </form>

@@ -34,6 +34,11 @@ public class ShopDAOImpl implements ShopDAO {
 	public List<GoodsViewVO> list(int cateCode) throws Exception {
 		return sql.selectList(namespace + ".list_2", cateCode);
 	}
+
+	@Override//상품 view page 한개의행이 있는지 검사하는 셀렉트원(하나이상 일때 투매니 익셉션을 발생)
+	public GoodsViewVO goodsView(int gdsNum) throws Exception {
+		return sql.selectOne("com.my.shop.mappers.adminMapper"+".goodsView",gdsNum);
+	}
 	
 	
 	

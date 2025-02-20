@@ -28,6 +28,12 @@ if(level == 1) {//1차 분류
 }
 
 	}
+
+
+	@Override//상품조회
+	public GoodsViewVO goodsView(int gdsNum) throws Exception {
+		return dao.goodsView(gdsNum);
+	}
 	
 	
 	

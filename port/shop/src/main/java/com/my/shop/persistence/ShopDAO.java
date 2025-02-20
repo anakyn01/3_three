@@ -10,5 +10,8 @@ public interface ShopDAO {
 	public List<GoodsViewVO> list(int cateCode, int cateCodeRef) throws Exception;
 
 	List<GoodsViewVO> list(int cateCode) throws Exception;
+	
+	//상품 view page
+	public GoodsViewVO goodsView(int gdsNum)throws Exception;
 
 }

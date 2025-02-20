@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <jsp:include page="../../include/header.jsp"/>
-
 <div class="container-fluid bg-gradient-primary">
 <div class="row">
 <div class="col-md-12">
@@ -23,19 +22,44 @@
 </div>
 
 <!-- 카테고리 -->
+
 <div class="d-flex">
 	<label class="form-label fw-bold text-white">1차 분류
-	    <select name="cateName" id="" class="form-select category1">
-	        <option value="${goods.cateName}" selected>${goods.cateName}</option>
+	    <select name="category1" id="" class="form-select category1">
+
+	  <c:forEach var="cate" items="${category}">
+        <c:if test="${cate.cateCodeRef == null}">
+          <option value="${cate.cateCode}" ${goods.cateCodeRef == cate.cateCode ? 'selected' : ''}>
+                ${cate.cateName}>
+          </option>
+      	</c:if>
+      	<c:if test="${cate.cateCodeRef != null}">
+      		<option value="">
+      		${cate.cateName}
+      		</option>
+      	</c:if>
+      </c:forEach>
 	    </select>
 	</label>
 
-	    <label class="form-label fw-bold mx-3 text-white">2차 분류
-	        <select name="cateCode" id="" class="form-select category2">
-	            <option value="${goods.cateCode}" selected>${goods.cateCode}</option><!-- child -->
-	        </select>
-	    </label>
+    <label class="form-label fw-bold mx-3 text-white">2차 분류
+        <select name="cateCode" id="" class="form-select category2">
+			<c:forEach var="cate" items="${category}">
+		        <c:if test="${cate.cateCodeRef != null}">
+
+		            <option value="${cate.cateCode}" 
+		                data-ref="${cate.cateCodeRef}"
+		                ${goods.cateCode == cate.cateCode ? 'selected' : ''}>
+		                ${cate.cateName}
+		            </option>
+		            
+		            
+		        </c:if>
+		    </c:forEach>
+        </select>
+    </label>
 </div>
+<script src="${contextPath}/resources/js/newSelect.js"></script>
 
 <!--수정할때 쓰기와 다른점 기존에 썼던 내용을 받아와야 해서 input에 밸류가 el로 들어감-->
 <div class="input-group my-3">
@@ -89,9 +113,7 @@
 <script type="text/javascript">
 var jsonData = JSON.parse('${category}');
 </script>
-<script src="${contextPath}/resources/js/jsonDrop2.js"></script>
-<!-- <script src="${contextPath}/resources/js/jsonDrop.js"></script> -->
-
+<!--  <script src="${contextPath}/resources/js/jsonDrop2.js"></script>-->
 </form>
 
 

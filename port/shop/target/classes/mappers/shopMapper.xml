@@ -25,6 +25,16 @@ where g.cateCode = #{cateCode}
 or c.cateCodeRef = #{cateCodeRef}
 ]]>
 </select>
+<select id="goodsView" resultType="com.my.shop.vo.GoodsViewVO"><!-- view -->
+<![CDATA[
+select
+g.gdsNum, g.gdsName, g.cateCode, c.cateCodeRef, c.cateName, gdsPrice, gdsStock, gdsDes, gdsDate, g.gdsImg, g.gdsThumbImg
+from tbl_goods g
+inner join goods_category c
+on g.cateCode = c.cateCode
+where g.gdsNum = #{gdsNum}
+]]>
+</select>
 <!-- 
 소비자가 보는 페이지를 최초리스트를 만듬
 - 특징 -

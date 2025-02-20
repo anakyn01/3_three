@@ -15,7 +15,15 @@
 </div>
 <div class="w-75 p-3">
 <!-- 내용 -->
-<h2 class="my-3 text-white">상품목록</h2>
+<h2 class="mt-5 mb-3 text-white fw-bold">상품목록</h2>
+<div class="my-3">
+<ul class="breadcrumb">
+  <li class="breadcrumb-item text-warning"><a href="#" class="text-warning">Photos</a></li>
+  <li class="breadcrumb-item text-warning"><a href="#" class="text-warning">Summer 2017</a></li>
+  <li class="breadcrumb-item text-warning"><a href="#" class="text-warning">Italy</a></li>
+  <li class="breadcrumb-item active text-white fw-bold">Rome</li>
+</ul>
+</div>
 <table class="table table-dark table-hover">
 <colgroup>
 <col width="5%"/>
@@ -54,6 +62,18 @@ ${list.gdsName}<!-- 제목 -->
 
 
 
+<div class="d-flex justify-content-center my-5">
+<ul class="pagination">
+  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+  <li class="page-item active"><a class="page-link" href="#">1</a></li>
+  <li class="page-item"><a class="page-link" href="#">2</a></li>
+  <li class="page-item"><a class="page-link" href="#">3</a></li>
+  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+</ul>
+
+
+
+</div>
 
 
 
