@@ -14,6 +14,7 @@
 <meta charset="UTF-8">
 <script src="${contextPath}/resources/ckeditor/ckeditor.js"></script>
 <title>=== SHOP ===</title>
+<script src="${contextPath}/resources/js/replylist.js"></script>
 </head>
 <body class="">
 <nav class="navbar navbar-expand-sm bg-light fixed-top">

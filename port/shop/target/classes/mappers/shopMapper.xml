@@ -43,6 +43,31 @@ where g.gdsNum = #{gdsNum}
 조인을 실행
 군을 설정해서 내비게이션에서 클릭할때 그 군에 상품만 보여줘야 된다
  -->
+<!-- 댓글시작 -->
+<insert id="registReply">
+<![CDATA[
+insert into tbl_reply(gdsNum, userId, repNum, repCon)
+values
+(#{gdsNum}, #{userId}, seq_tbl_reply.nextval, #{repCon})
+]]>
+</insert>
+<select id="replyList" resultType="com.my.shop.vo.ReplyListVO">
+<![CDATA[
+select
+r.gdsNum, r.userId, r.repNum, r.repCon, r.repDate, m.userName
+from tbl_reply r 
+inner join tbl_member m
+on r.userId = m.userId
+where gdsNum = #{gdsNum}
+]]>
+</select>
+<delete id="deleteReply"><!-- 세션때문에 기준을 두개  -->
+<![CDATA[
+delete tbl_reply
+where repNum = #{repNum} and userId = #{userId}
+]]>
+</delete>
+<!-- 댓글 끝 -->
 </mapper>
 <!-- 
 
