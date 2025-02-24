@@ -9,6 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.my.shop.vo.GoodsViewVO;
+import com.my.shop.vo.ReplyListVO;
+import com.my.shop.vo.ReplyVO;
 
 @Repository
 public class ShopDAOImpl implements ShopDAO {
@@ -39,7 +41,32 @@ public class ShopDAOImpl implements ShopDAO {
 	public GoodsViewVO goodsView(int gdsNum) throws Exception {
 		return sql.selectOne("com.my.shop.mappers.adminMapper"+".goodsView",gdsNum);
 	}
-	
+	//댓글쓰기
+	@Override
+	public void registReply(ReplyVO reply) throws Exception {
+sql.insert(namespace + ".registReply", reply);		
+	}
+	//댓글리스트
+	@Override
+	public List<ReplyListVO> replyList(int gdsNum) throws Exception {
+		return sql.selectList(namespace + ".replyList", gdsNum);
+	}
+	//댓글삭제
+	@Override
+	public void deleteReply(ReplyVO reply) throws Exception {
+sql.delete(namespace + ".deleteReply", reply);	
+	}
+	//아이디 체크
+	@Override
+	public String idCheck(int repNum) throws Exception {
+		return sql.selectOne(namespace + ".replyUserIdCheck", repNum);
+	}
+	//댓글수정
+	@Override
+	public void modifyReply(ReplyVO reply) throws Exception {
+		sql.update(namespace + ".modifyReply", reply);		
+	}
+	//sql과 같은 layer dao[인터페이스], daoImpl[확장]
 	
 	
 	

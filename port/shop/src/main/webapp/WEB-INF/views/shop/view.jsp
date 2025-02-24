@@ -79,8 +79,8 @@
 <c:if test="${member != null}"><!-- 로그인을 하면 댓글을 사용 -->
 <section class="replyForm">
 <!-- 히든으로 제품번호가 들어가야됨 -->
+<form role="form" method="post" autocomplete="off">
 
-<form role="form" method="post">
 <input type="hidden" name="gdsNum" id="gdsNum" value="${view.gdsNum}">
 <!-- 댓글쓰기 -->
 <div class="my-3">
@@ -100,15 +100,7 @@
 
 <section class="replyList">
 <ul class="">
-<%-- <c:forEach items="${reply }" var="reply">
-<li class="">
-<div class="">
-<span>${reply.userName}</span>
-<span><fmt:formatDate value="${reply.repDate}" pattern="yyyy-MM-dd"/></span>
-</div>
-<div class="replyContent">${reply.repCon}</div>
-</li>
-</c:forEach>--%>
+
 </ul>
 <script>
 replyList();//헤더에서 만들 함수 호출

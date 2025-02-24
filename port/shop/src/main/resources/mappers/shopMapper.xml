@@ -67,6 +67,21 @@ delete tbl_reply
 where repNum = #{repNum} and userId = #{userId}
 ]]>
 </delete>
+<!-- 아이디 체크 -->
+<select id="replyUserIdCheck" resultType="String">
+<![CDATA[
+select userId from tbl_reply where repNum = #{repNum}
+]]>
+</select>
+<update id="modifyReply">
+<![CDATA[
+update tbl_reply
+set
+repCon = #{repCon}
+where repNum = #{repNum}
+and userId = #{userId}
+]]>
+</update>
 <!-- 댓글 끝 -->
 </mapper>
 <!-- 

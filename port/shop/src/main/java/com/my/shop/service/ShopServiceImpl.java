@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 
 import com.my.shop.persistence.ShopDAO;
 import com.my.shop.vo.GoodsViewVO;
+import com.my.shop.vo.ReplyListVO;
+import com.my.shop.vo.ReplyVO;
 
 @Service//실제 비즈니스 로직이 흐르는곳
 public class ShopServiceImpl implements ShopService {
 
-	@Inject
+	@Inject//
 	private ShopDAO dao;
 	
 	
@@ -34,7 +36,38 @@ if(level == 1) {//1차 분류
 	public GoodsViewVO goodsView(int gdsNum) throws Exception {
 		return dao.goodsView(gdsNum);
 	}
+
+
+	@Override//댓글쓰기
+	public void registReply(ReplyVO reply) throws Exception {
+		dao.registReply(reply);		
+	}
+
+
+	@Override//댓글리스트
+	public List<ReplyListVO> replyList(int gdsNum) throws Exception {
+		return dao.replyList(gdsNum);
+	}
+
+
+	@Override//댓글삭제
+	public void deleteReply(ReplyVO reply) throws Exception {
+		dao.deleteReply(reply);		
+	}
+
+
+	@Override//아이디 체크
+	public String idCheck(int repNum) throws Exception {
+		return dao.idCheck(repNum);
+	}
+
+
+	@Override//댓글수정
+	public void modifyReply(ReplyVO reply) throws Exception {
+		dao.modifyReply(reply);		
+	}
 	
+
 	
 	
 	
