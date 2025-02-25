@@ -63,6 +63,24 @@ alter table tbl_reply
 add constraint tbl_reply_userId foreign key(userId)
 references tbl_member(userId);
 
+카트담기
+create table tbl_cart(
+cartNum number not null,
+userId varchar2(50) not null,
+gdsNum number not null,
+cartStock number not null,
+addDate date default sysdate,
+primary key(cartNum, userId)
+);
+create sequence seq_tbl_cart;
+
+alter table tbl_cart
+add constraint tbl_cart_userId foreign key(userId)
+references tbl_member(userId);
+
+alter table tbl_cart
+add constraint tbl_cart_gdsNum foreign key(gdsNum)
+references tbl_member(gdsNum);
 
 
 

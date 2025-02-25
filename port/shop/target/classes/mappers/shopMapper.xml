@@ -83,6 +83,41 @@ and userId = #{userId}
 ]]>
 </update>
 <!-- 댓글 끝 -->
+<!-- 카트 담기 -->
+<insert id="addCart">
+<![CDATA[
+insert into tbl_cart(cartNum, userId, gdsNum, cartStock)
+values
+( seq_tbl_cart.nextval,#{userId}, #{gdsNum}, #{cartStock})
+]]>
+</insert>
+<!-- 카트 리스트 -->
+<select id="cartList" resultType="com.my.shop.vo.CartListVO">
+<![CDATA[
+select
+row_number() over(order by c.cartNum desc) as num,
+c.cartNum, c.userId, c.gdsNum, c.cartStock, c.addDate,
+g.gdsName, g.gdsPrice, g.gdsThumbImg
+from tbl_cart c
+inner join tbl_goods g
+on c.gdsNum = g.gdsNum
+where c.userId= #{userId}
+]]>
+</select>
+<!-- row_number() over(order by c.cartNum desc) as num, 
+내림차순 row_number()[윈도우 함수 ] 각행에 고유한 번호를 할당 cartNum
+row_number()[윈도우 함수 ] 번호는 기본적으로 1부터 시작하여 행의 순서에 따라 증가
+주의사항은 동일한 값에 대해서 고유한 번호를 부여하기 때문에 같은값 여러번 나타나더라도
+번호가 틀려집니다
+-->
+
+
+
+
+
+
+
+
 </mapper>
 <!-- 
 

@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.my.shop.persistence.ShopDAO;
+import com.my.shop.vo.CartListVO;
+import com.my.shop.vo.CartVO;
 import com.my.shop.vo.GoodsViewVO;
 import com.my.shop.vo.ReplyListVO;
 import com.my.shop.vo.ReplyVO;
@@ -65,6 +67,19 @@ if(level == 1) {//1차 분류
 	@Override//댓글수정
 	public void modifyReply(ReplyVO reply) throws Exception {
 		dao.modifyReply(reply);		
+	}
+
+
+	@Override
+	public void addCart(CartVO cart) throws Exception {
+		dao.addCart(cart);
+		
+	}
+
+
+	@Override//카트 리스트
+	public List<CartListVO> cartList(String userId) throws Exception {
+		return dao.cartList(userId);
 	}
 	
 

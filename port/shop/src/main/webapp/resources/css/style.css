@@ -117,6 +117,7 @@ html body .thumb {
   display: none;
 }
 .replyModal .modalContent {
+  z-index: 15;
   position: fixed;
   top: 20%;
   left: calc(50% - 250px);

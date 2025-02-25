@@ -2,6 +2,7 @@
     z-index:2;
     display:none;
     .modalContent{
+        z-index:15;
         position:fixed; top:20%; 
         left:calc(50% - 250px);//
         width:530px; height:300px; padding:20px 10px;

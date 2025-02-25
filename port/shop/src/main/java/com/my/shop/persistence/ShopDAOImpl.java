@@ -8,6 +8,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.my.shop.vo.CartListVO;
+import com.my.shop.vo.CartVO;
 import com.my.shop.vo.GoodsViewVO;
 import com.my.shop.vo.ReplyListVO;
 import com.my.shop.vo.ReplyVO;
@@ -67,6 +69,16 @@ sql.delete(namespace + ".deleteReply", reply);
 		sql.update(namespace + ".modifyReply", reply);		
 	}
 	//sql과 같은 layer dao[인터페이스], daoImpl[확장]
+
+	@Override//카트담기
+	public void addCart(CartVO cart) throws Exception {
+		sql.insert(namespace + ".addCart", cart);
+	}
+
+	@Override//카트리스트
+	public List<CartListVO> cartList(String userId) throws Exception {
+		return sql.selectList(namespace + ".cartList",userId);
+	}
 	
 	
 	

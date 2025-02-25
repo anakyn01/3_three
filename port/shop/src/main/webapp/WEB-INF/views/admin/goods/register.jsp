@@ -11,7 +11,7 @@
 <jsp:include page="../include/lnb.jsp"/>
 </div>
 <div class="w-75 p-4">
-<h2 class="my-3 text-white">상품등록</h2>
+<h2 class="mt-5 mb-3 text-white">상품등록</h2>
 <form method="post" enctype="multipart/form-data"><!-- 이미지나 다른 파일을 등록할때  -->
 <div class="input-group">
 <label class="form-label text-white">1차 분류</label>

@@ -17,6 +17,7 @@
 <script>
 function replyList(){
 	var gdsNum = ${view.gdsNum};
+
 	//비동기식 데이터 요청
 	$.getJSON("/shop/view/replyList" + "?n=" + gdsNum, function(data){
 		var str = "";//초기화
@@ -26,16 +27,16 @@ function replyList(){
 			var repDate = new Date(this.repDate);
 			repdate = repDate.toLocaleDateString("ko-KR")
 	//html코드 조립
-	str += "<li data-repNum='" + this.repNum + "'>"
+	str += "<li data-repNum='" + this.repNum + "'class='list-group-item'>"
 	+ "<div class=''>"
-	+ "<span class=''>" + this.userName + "</span>"
-	+ "<span class=''>" + repDate + "</span>"
+	+ "<p class=''>" + this.userName + "</p>"
+	+ "<p class='mx-3'>" + repDate + "</p>"
 	+ "</div>"
 	+ "<div class='replyContent'>"+this.repCon+"</div>"
 	+"<c:if test='${member != null}'>"//세션이 있어야만 수정삭제가 가능
-	+ "<div class='replyFooter'>"
-	+ "<button type='button' class='modify btn btn-light' data-repNum='"+this.repNum+"'>M</button>"
-	+ "<button type='button' class='delete btn btn-light' data-repNum='"+this.repNum+"'>D</button>"
+	+ "<div class='replyFooter my-3'>"
+	+ "<button type='button' class='modify btn btn-outline-secondary' data-repNum='"+this.repNum+"'>M</button>"
+	+ "<button type='button' class='delete btn btn-outline-secondary mx-3' data-repNum='"+this.repNum+"'>D</button>"
 	+ "</div>"
 	+"</c:if>"
 	+"</li>";
@@ -43,10 +44,17 @@ function replyList(){
 	$("section.replyList ul").html(str);
 	});
 	}
+
+
+
+
+
+
 </script>
+<script src="${contextPath}/resources/js/replylist.js"></script>
 </head>
 <body class="">
-<nav class="navbar navbar-expand-sm bg-light fixed-top">
+<nav class="navbar navbar-expand-sm bg-light  fixed-top">
 <div class="container-fluid">
 <a class="navbar-brand" href="/">Shop</a>
 <!-- 토글버튼  -->
@@ -112,20 +120,10 @@ function replyList(){
         </span>
     </li>
     
-
-		
-
-            
-
-        
-
-        
-        
-
         <div class="topbar-divider d-none d-sm-block"></div>
      
 		<li class="nav-item">
-			<a class="nav-link fw-bold" href="${contextPath}/shop/list?c=1&1=1">쇼핑몰 상품보러가기</a>
+<a class="nav-link fw-bold" href="${contextPath}/shop/list?c=1&l=2">쇼핑몰 상품보러가기</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" href="${contextPath}/shop/cartList">카트리스트</a>

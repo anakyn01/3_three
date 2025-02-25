@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<ul class="navbar-nav">
+<ul class="navbar-nav mt-5">
     <li class="nav-link dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">버거</a>
         <ul class="dropdown-menu">

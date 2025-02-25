@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.my.shop.service.ShopService;
+import com.my.shop.vo.CartListVO;
+import com.my.shop.vo.CartVO;
 import com.my.shop.vo.GoodsViewVO;
 import com.my.shop.vo.MemberVO;
 import com.my.shop.vo.ReplyListVO;
@@ -114,6 +116,36 @@ if(member.getUserId().equals(userId)) {//로그인한 아이디가 작성한 아
 }
 return result;		
 	}
+	
+	//카트담기 RDBMS ORM
+	@ResponseBody
+	@PostMapping("/view/addCart")
+	public void addCart(CartVO cart, HttpSession session)throws Exception{
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		cart.setUserId(member.getUserId());
+		
+		service.addCart(cart);
+	}
+	
+	//카트목록
+	@GetMapping("/cartList")
+public void getCartList(HttpSession session, Model model) throws Exception {
+		
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		String userId = member.getUserId();
+		
+		List<CartListVO> cartList = service.cartList(userId);
+		model.addAttribute("cartList", cartList);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

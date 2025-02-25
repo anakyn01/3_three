@@ -99,7 +99,7 @@
 </c:if>
 
 <section class="replyList">
-<ul class="">
+<ul class="list-group list-group-flush">
 
 </ul>
 <script>
@@ -123,18 +123,19 @@ replyList();//헤더에서 만들 함수 호출
 
 <div class="modalContent">
 
-<div class="">
-<textarea class="modal_repCon form-control" name="modal_repCon"></textarea>
-</div>
+	<div class="">
+	<textarea class="modal_repCon form-control" name="modal_repCon"></textarea>
+	</div>
 
-<div class="d-flex justify-content-end my-2">
-<button type="button" class="modal_modify_btn btn btn-success mx-2">
-수정
-</button>
-<button type="button" class="modal_cancel btn btn-secondary">
-취소
-</button>
-</div>
+	<div class="d-flex justify-content-end my-2">
+	<button type="button" class="modal_modify_btn btn btn-success mx-2">
+	수정
+	</button>
+	<button type="button" class="modal_cancel btn btn-secondary">
+	취소
+	</button>
+	</div>
+
 </div>
 <script src="/resources/js/replyDelete.js"></script>
 <script src="/resources/js/replyEdit.js"></script>
