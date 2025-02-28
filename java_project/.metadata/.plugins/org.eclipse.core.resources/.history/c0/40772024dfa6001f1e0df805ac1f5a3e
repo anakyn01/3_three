@@ -1,0 +1,16 @@
+package com.cocea.lesson.object;
+
+import java.util.HashMap;
+
+public class Hash {
+
+	public static void main(String[] args) {
+		//앞전에서 했던것처럼 스트링을 추가할때 문제가 생길경우 그럴땐 key / value
+		HashMap<String, String> capital = new HashMap<String, String>();
+		capital.put("한국", "서울");
+		capital.put("독일", "베를린");
+		capital.put("미국", "DC");
+		System.out.println(capital);
+	}
+
+}

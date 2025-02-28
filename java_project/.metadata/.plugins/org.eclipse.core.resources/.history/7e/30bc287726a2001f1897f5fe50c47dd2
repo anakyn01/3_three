@@ -1,0 +1,22 @@
+package com.cocea.lesson.tutorial;
+
+public class Loop {
+
+	public static void main(String[] args) {
+System.out.println("루프는 지정된 조건에 도달하는한 코드블럭을 실행합니다");
+
+//while
+int q = 0; //start index
+while (q < 5) {
+	System.out.println(q);
+	q++;//후위연산자
+	//전위 전산자[값이 먼자 증가하고 작업 수행] 후위연산자 [작업이 수행된 후에 값이 증가]
+}
+	}
+
+}
+/*
+while (condition){
+//code block
+}
+*/

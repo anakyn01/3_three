@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.shop.mappers.adminMapper">
+<!-- 카테고리 호출 -->
+<select id="category" resultType="com.my.shop.vo.CategoryVO">
+<![CDATA[
+select
+level, cateName, cateCode, cateCodeRef
+from goods_category
+start with cateCodeRef is null connect by prior cateCode = cateCoderef
+]]>
+</select>
+<insert id="register" parameterType="com.my.shop.vo.GoodsVO">
+<![CDATA[
+insert into tbl_goods(gdsNum, gdsName, cateCode, gdsPrice, gdsStock, gdsDes, gdsImg, gdsThumbImg)
+values
+(seq_gdsNum.nextval, #{gdsName}, #{cateCode}, #{gdsPrice}, #{gdsStock}, #{gdsDes}, #{gdsImg}, #{gdsThumbImg})
+]]>
+</insert>
+<!-- 상품목록 -->
+<select id="goodslist" resultType="com.my.shop.vo.GoodsVO">
+<![CDATA[
+select
+gdsNum, gdsName, cateCode, gdsPrice, gdsStock, gdsDes, gdsImg, gdsThumbImg, gdsDate
+from tbl_goods
+order by gdsNum desc
+]]>
+</select>
+<select id="goodsView" resultType="com.my.shop.vo.GoodsViewVO">
+<![CDATA[
+select
+g.gdsNum, g.gdsName, g.cateCode, c.cateCodeRef, c.cateName, gdsPrice, gdsStock, gdsDes, gdsImg, gdsDate,
+g.gdsImg, g.gdsThumbImg
+from tbl_goods g
+inner join goods_category c
+on g.cateCode = c.cateCode            
+where g.gdsNum = #{gdsNum}
+]]>
+</select>
+<update id="goodsModify">
+<![CDATA[
+update tbl_goods
+set
+gdsName = #{gdsName}, cateCode=#{cateCode}, gdsPrice = #{gdsPrice}, gdsStock=#{gdsStock}, gdsDes=#{gdsDes}, gdsImg=#{gdsImg}, gdsThumbImg=#{gdsThumbImg}
+where gdsNum = ${gdsNum}
+]]>
+</update>
+<delete id="goodsDelete">
+<![CDATA[
+delete tbl_goods where gdsNum = #{gdsNum}
+]]>
+</delete>
+<!-- 
+Join : 두개 이상의 테이블에서 관련 열을 기준으로 행을 결합할때 사용
+내부 조인[INNER JOIN] : 두 테이블에서 일치하는 값을 갖는 레코드를 선택
+on g.cateCode = c.cateCode g테이블과 c테이블의 값이 같을때 두테이블의 데이터를 결합
+
+왼쪽 조인[LEFT JOIN] : 왼쪽 테이블의 모든 레코드와 오른쪽 테이블에 일치하는 레코드를 리턴
+오른쪽 조인[RIGHT JOIN]: 오른쪽 테이블의 모든 레코드와 왼쪽 테이블에 일치하는 레코드를 리턴
+전체[FULL]:왼쪽 오른쪽 테이블 레코드에 일치하는 항목이 있을 경우 모든레코드 리턴
+셀프[self]:테이블 자체가 자체적으로 조인됩니다
+
+별칭 tbl_goods.gdsNum 간단한 별칭 g.gdsNum
+
+import numpy as np
+xpoint = numpy.array([0, 6])
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
+<!-- 
+start with cateCodeRef is null => 계층적구조에 시작점
+connect by prior cateCode = cateCoderef => 부모범주가 이전레벨(현재범주)와 일치하는지 재귀적으로 찾도록 지시
+ -->

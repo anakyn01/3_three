@@ -1,0 +1,14 @@
+package com.cocea.lesson.object;
+
+class Visa{
+	
+}
+
+public class Nippon extends Visa{
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

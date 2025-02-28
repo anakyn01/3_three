@@ -1,0 +1,17 @@
+package com.cocea.lesson.object;
+
+public class FatherImpl implements Familly {
+
+	@Override
+	public void famillySound() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

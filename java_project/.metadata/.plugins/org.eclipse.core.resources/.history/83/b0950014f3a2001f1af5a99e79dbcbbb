@@ -1,0 +1,18 @@
+package com.cocea.lesson.object;
+
+class Animal{
+	protected String sound = "동물은 각각에 소리가 있어요";
+	public void self() {
+		System.out.println("강아지 멍멍, 돼지는 꿀꿀");
+	}
+}
+
+
+public class Pig {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

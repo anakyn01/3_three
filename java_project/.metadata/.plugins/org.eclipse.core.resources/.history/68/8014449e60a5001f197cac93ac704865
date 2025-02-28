@@ -1,0 +1,23 @@
+package com.cocea.lesson.object;
+
+enum Level{
+	LOW, MEDIUM, HIGH
+}
+
+
+
+public class Const {
+
+	public static void main(String[] args) {
+		
+		Level myVar = Level.MEDIUM;//재선언 재할당 금지 참조만 가능함...
+		
+
+String Cons = "ENUM은 자바스크립트에 상수(변경 불가능한 참조만 가능한 변수) 그룹을 나타내는 특수한 클래스\n"+
+"ENUM 상수를 만들려면 class또는 interface 대신에 enum키워드를 사용하고 상수를 쉼표(구분자)로 구분합니다\n"+
+"대문자 이어야 합니다\n"+
+"Enum은 'enumerations'의 줄임말로 '특별히 나열된 것' 을 의미합니다.";
+
+	}
+
+}

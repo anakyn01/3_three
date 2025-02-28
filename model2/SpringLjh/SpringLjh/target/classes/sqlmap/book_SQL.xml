@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="book"><!-- 네임스페이스는 테이블명이나 밸류오브젝트 -->
+<insert id="insert" parameterType="hashMap" useGeneratedKeys="true" keyProperty="book_id">
+<![CDATA[
+insert into book (title, category, price) 
+values 
+(#{title}, #{category}, #{price})
+]]>
+</insert>
+<select id="select_detail" parameterType="hashMap" resultType="hashMap">
+<![CDATA[
+select title, category, price, insert_date from book where book_id = #{bookId}
+]]>
+</select>
+</mapper>
+<!-- 
+parameterType="String" => 파라미터를 한개로 처리
+parameterType="hashMap" => 파라미터를 해시맵을 이용하여 여러개 처리
+useGeneratedKeys="true" => 자동 생성된 키 값들을 사져올거라는걸 명시
+keyProperty="book_id" => pk를 의미
+<![CDATA[]]> 마이바티스 태그가 아닌 캐릭터 데이터 sql명령문을 사용
+ -->

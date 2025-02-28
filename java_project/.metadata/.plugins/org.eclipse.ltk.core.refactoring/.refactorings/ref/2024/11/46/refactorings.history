@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.cocea.lesson.math.Math&apos; to &apos;Math_1&apos;&#x0D;&#x0A;- Original project: &apos;ref&apos;&#x0D;&#x0A;- Original element: &apos;com.cocea.lesson.math.Math&apos;&#x0D;&#x0A;- Renamed element: &apos;com.cocea.lesson.math.Math_1&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Math&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.cocea.lesson.math{Math.java[Math" matchStrategy="1" name="Math_1" qualified="false" references="true" similarDeclarations="false" stamp="1731459039411" textual="false" version="1.0"/>
+</session>

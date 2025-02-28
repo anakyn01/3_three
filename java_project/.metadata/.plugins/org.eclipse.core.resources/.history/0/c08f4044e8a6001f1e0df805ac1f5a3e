@@ -1,0 +1,12 @@
+package com.cocea.lesson.object;
+
+public class Iter {
+
+	public static void main(String[] args) {
+		//반복자 => ArrayList와 HashSet과 같은 컬렉션을 반복하는데 사용할수 있는 객체
+		
+		
+
+	}
+
+}

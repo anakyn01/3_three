@@ -1,0 +1,22 @@
+package com.cocea.lesson.object;
+
+interface FirstInterface{
+	public void myMethod();
+}
+interface SecondInterface{
+	public void myOtherMethod();
+}
+
+class DemoImpl implements FirstInterface, SecondInterface{
+	public void myMethod() {"some text.."};
+	public void myOtherMethod() {"some other text"};
+}
+
+public class Two {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,12 @@
+package com.cocea.lesson.object;
+
+//1) 상속(서브클래스[자식]와 슈퍼클래스[부모])
+
+public class Test_1118 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

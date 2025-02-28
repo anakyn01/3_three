@@ -1,0 +1,15 @@
+package com.cocea.lesson.object;
+
+class YoungBrother implements Brother{
+	
+}
+
+public class Child_2 {
+	//출력포트는 클래스로 지정한 이름에서만 가동이 가능함
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

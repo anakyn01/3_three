@@ -1,0 +1,15 @@
+package com.cocea.lesson.object;
+
+class Visa{
+	//일본에 가는 방법 => 과정평가형이나 정보처리 산업기사 취득
+	
+}
+
+public class Nippon extends Visa{
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

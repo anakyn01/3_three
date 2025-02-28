@@ -1,0 +1,28 @@
+package com.cocea.lesson.object;
+
+public class Constructor_homework_1119 {
+	
+	//프린트함수 위에 클래스에 속성값을 정의함
+	int x;//1) 값을 넣지 않고 정의
+	
+	//2)클래스에 생성자 쓰기
+	public Constructor_homework_1119() {
+		//3)정의한 변수에 값을 대입
+		x = 10;
+	}
+
+	public static void main(String[] args) {
+		//4)생성자 값을 사용하기 위해서 객체로 정의
+		Constructor_homework_1119 nums = new Constructor_homework_1119();
+		//5) 사용함
+		
+		
+
+String Con_desc = "생성자는 : 객체를 초기화 하는데 사용되는 특수 메서드"+
+"클래스의 객체가 생성될때 호출됩니다"+
+"객체 속성에 대한 초기값을 설정하는데 사용합니다"+
+"자바에서 생성자를 만들때는 클래스명과 동일하게 사용합니다";
+
+	}
+
+}

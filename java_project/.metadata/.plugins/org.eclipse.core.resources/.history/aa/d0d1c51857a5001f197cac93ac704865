@@ -1,0 +1,25 @@
+package com.cocea.lesson.object;
+
+//1) 상속(서브클래스[자식]와 슈퍼클래스[부모]), protected
+class Tell{
+	protected String brand = "전화기";
+	public void tell() {
+		System.out.println("무시 무시");
+	}
+}
+
+public class Test_1118 extends Tell{
+	
+	//tell attribute
+	private String modelName ="070 전화기";
+	
+
+
+	public static void main(String[] args) {
+		//클래스명 자신으로 객체를 만듬
+		Test_1118 test = new Test_1118();
+		test.tell();
+
+	}
+
+}

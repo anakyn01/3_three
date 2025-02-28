@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.homework.mapper.BlogMapper">
+<delete id="delete" parameterType="java.lang.Integer">
+<![CDATA[
+delete from tb_blg_cont where blg_cont_seq = #{blg_cont_seq}
+]]>
+</delete>
+<resultMap type="com.my.homework.dto.HomeListResponseVO" id="selectListResultMap">
+<result column="BLG_CONT_SEQ" property="blgContSeq" jdbcType="INTEGER" javaType="int"/>
+<result column="TITLE" property="title" jdbcType="NVARCHAR" javaType="String"/>
+<result column="CONT_BDY" property="contBdy" jdbcType="NVARCHAR" javaType="String"/>
+<result column="INSERT_DT" property="insertDt" jdbcType="TIMESTAMP" javaType="java.time.LocalDateTime"/>
+</resultMap><!-- jdbcType(java database Connectivity) API를 사용하여 데이터베이스를 연결할때 SQL에 쿼리결과를 java객체로 변환하거나 
+데이터를 SQL쿼리로 전달할때 사용되는 데이터타입을 지정하는 속성 주로 MyBatis와 같은 ORM(Object-relational mapping)프레임 워크에서 사용합니다
+예외처리 및 정밀도를 유지한다 박싱 : 기본타입의 데이터 -> 래퍼클래스의 인스턴스를 변환하는 과정
+언박싱 : 래퍼클래스의 인스턴스에 저장된값 -> 기본타입의 데이터로 꺼내는 과정
+ -->
+<select id="selectList" parameterType="com.my.homework.dto.HomeListRequestVO" resultMap="selectListResultMap">
+<![CDATA[
+select BLG_CONT_SEQ, TITLE, TO_CHAR(CONT_BDY) as CONT_BDY, INSERT_DT from TB_BLG_CONT where 1 =1
+]]><!-- 관습적인 구문 1=1 참이다 때문에 데이터에 따라 추가 조건이 붙을수도 있고 붙지 않을수도 있는 경우에 사용됩니다 -->
+<if test="search != null">
+AND (TITLE LIKE '%' || #{search} || '%' OR CONT_BDY LIKE '%' || #{search}  '%')
+</if><!-- 
+조건이 2개 이상일 경우 처음에 시작하는 조건은 where로 시작하고 두번째로 시작하는 조건은 and혹은 or등 연결 논리연산자를 사용
+ -->
+</select>
+</mapper>

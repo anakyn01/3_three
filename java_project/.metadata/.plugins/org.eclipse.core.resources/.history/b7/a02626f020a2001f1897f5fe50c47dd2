@@ -1,0 +1,29 @@
+package com.cocea.lesson.tutorial;
+
+public class IfElse {
+
+	public static void main(String [] args) {
+		//만일 무엇이라면 (userID != null)
+		if (20 > 18) {
+			System.out.println("20은 18보다 크다");
+		}
+		
+		//변수테스트
+		int x = 20;
+		int y = 18;
+		if (x > y) {
+			System.out.println("x는 y보다 크다");
+		}
+		
+	}
+}
+/*
+Conditions and if Statements
+if : 지정된 조건이 참인 경우 실행할 코드 블록을 지정하는 데 사용
+if(condition){
+}
+
+else : 동일한 조건이 거짓인 경우 실행할 코드 블록을 지정하는 데 사용
+else if : 첫 번째 조건이 거짓인 경우 테스트할 새 조건을 지정하는 데 사용
+
+*/

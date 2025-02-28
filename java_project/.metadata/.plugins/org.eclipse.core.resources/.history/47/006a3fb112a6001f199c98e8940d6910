@@ -1,0 +1,36 @@
+package com.cocea.lesson.object;
+
+import java.util.ArrayList;//ctrl + shift + O
+//java.util(��Ű��) ArrayList(Ŭ����)
+
+
+public class Arr {
+
+	public static void main(String[] args) {
+		
+		
+		ArrayList<String> cars = new ArrayList<String>();
+		//��Ͽ� ��Ҹ� �߰��Ϸ��� add() => Ŀ�ǵ��.add("������ ��")
+		cars.add("차1");
+		cars.add("차2");
+		cars.add("차3");
+		System.out.println(cars); //[��1, ��2, ��3]
+		
+		
+		
+		
+		
+		
+String TheArray ="����Ʈ�� ���鶧 ���\n"+
+"�Ϲ� ���� ��̿� �ٸ��� �ڹ���ƿ ��̴� �迭�� ũ�⸦ �����Ҽ� ����\n"+
+"�������� �߰� �Ҷ��� add�� �����\n"+
+"�׸� ������ => get �ε��� ��ȣ\n"+
+"�׸񺯰� => set()\n"+
+"�׸����� => remove()n"+
+"�������� => clear()\n"+
+"ũ�⸦ �����Ҽ� ������ �˾ƺ��� ���� => size()\n"+
+"for-each�� �ݺ��Ҽ� ����\n"+
+"���� Ŭ������ ����Ҽ� ����(���ð��� ��ü��)";
+	}
+
+}

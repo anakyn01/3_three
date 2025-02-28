@@ -1,0 +1,15 @@
+package com.cocea.lesson.object;
+
+public class TryCatchFinally {
+
+	public static void main(String[] args) {
+		// 예외
+
+		try {//코드블럭을 실행하는 곳
+			
+		}catch() {//코드블럭에 오류가 있다면 캐치해서 알려줌
+			
+		}
+	}
+
+}

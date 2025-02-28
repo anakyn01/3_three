@@ -1,0 +1,13 @@
+package com.cocea.lesson.method;
+
+public class Function {
+
+	public static void main(String[] args) {
+String Meth = "매서드는 호출될때만 실행되는 코드블록\n"+
+"메소드는 특정 작업을 수행하는데 사용하며 함수 라고도 합니다\n"+
+"왜 메소드를 사용하나요? dry 코드를 재사용하려면 한번 정의하고 여러번 사용하세요";
+
+System.out.println(Meth);
+	}
+
+}

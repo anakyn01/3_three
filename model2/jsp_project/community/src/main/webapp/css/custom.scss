@@ -1,0 +1,63 @@
+@import "reset";
+@import "font";
+@import "gradient";
+@import "padding";
+
+html{/*local*/ 
+    body{
+        a{
+          color:#3b5998;
+          text-decoration:none;
+          background-color: transparent;
+        }
+        small, .small{
+        font-size: 80%; font-weight:400;
+        }
+        .bg-register-image{
+            background:url(../images/pic.jpg);
+            background-position:center;
+            background-size:cover;
+        }
+        .bg-login-image{
+            background:url(../images/pic.jpg);
+            background-position:center;
+            background-size:cover;
+        }
+        .user{
+            .custom-checkbox{
+                label{
+                line-height:1.5rem;
+                }
+                .custom-control-label{
+                position:relative; margin-bottom: 0; vertical-align: top;
+                }
+            }
+            .custom-control{
+            position:relative; z-index:1; display:block; min-height:1.5rem;
+            padding-left:1.5rem;
+            }
+            .btn-user{
+                font-size:.8rem; //16 * 0.8
+                border-radius: 10rem;
+                padding:.75rem 1rem;
+                background-color:#0085fe !important;
+                color:white !important;
+            }
+            .btn-block{
+                display: block;
+                width:100%;
+            }
+            .btn-google{
+            color:#fff;
+            background-color: #ea4335 !important;    
+            }
+            .btn-facebook{
+            color:#fff;
+            background-color: #3b5998 !important;    
+            }
+            .form-control-user{
+            font-size:.8rem; border-radius: 10rem; padding:.8rem 1rem !important;
+            }
+        }
+    }
+}
