@@ -5,6 +5,9 @@ import java.util.List;
 import com.my.shop.vo.CategoryVO;
 import com.my.shop.vo.GoodsVO;
 import com.my.shop.vo.GoodsViewVO;
+import com.my.shop.vo.OrderListVO;
+import com.my.shop.vo.OrderVO;
+import com.my.shop.vo.ReplyListVO;
 
 //매퍼의 쿼리문을 호출하는 dao
 public interface AdminDAO {
@@ -26,6 +29,19 @@ public interface AdminDAO {
 	
 	//상품삭제
 	public void goodsDelete(int gdsNum) throws Exception;
+	
+	//주문목록
+	public List<OrderVO> orderList() throws Exception;
+	
+	public List<OrderListVO> orderView(OrderVO order) throws Exception;
+	
+	public void delivery(OrderVO order)throws Exception;
+	
+	public void changeStock(GoodsVO goods)throws Exception;
+	
+	public List<ReplyListVO> allReply() throws Exception;
+	
+	public void deleteReply(int repNum) throws Exception;
 	
 	
 	

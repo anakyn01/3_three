@@ -10,7 +10,13 @@ public class OrderVO {
 	private String userAddr1;
 	private String userAddr2;
 	private String userAddr3;
-	private String orderPhon;
+	private String orderPhone;
+	public String getOrderPhone() {
+		return orderPhone;
+	}
+	public void setOrderPhone(String orderPhone) {
+		this.orderPhone = orderPhone;
+	}
 	private int amount;
 	private Date orderDate;
 	
@@ -70,10 +76,5 @@ public class OrderVO {
 	public void setUserAddr3(String userAddr3) {
 		this.userAddr3 = userAddr3;
 	}
-	public String getOrderPhon() {
-		return orderPhon;
-	}
-	public void setOrderPhon(String orderPhon) {
-		this.orderPhon = orderPhon;
-	}
+
 }

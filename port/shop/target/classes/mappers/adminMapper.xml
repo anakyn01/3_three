@@ -52,6 +52,34 @@ where gdsNum = ${gdsNum}
 delete tbl_goods where gdsNum = #{gdsNum}
 ]]>
 </delete>
+<insert id="addCart">
+<![CDATA[
+]]>
+</insert>
+<select id="cartList" resultType="com.my.shop.vo.CartListVO">
+<![CDATA[
+]]>
+</select>
+<select id="orderView" resultType="com.my.shop.vo.OrderListVO">
+<![CDATA[
+]]>
+</select>
+<update id="delivery">
+<![CDATA[
+]]>
+</update>
+<update id="changeStock">
+<![CDATA[
+]]>
+</update>
+<select id="allReply" resultType="com.my.shop.vo.ReplyListVO">
+<![CDATA[
+]]>
+</select>
+<delete id="deleteReply">
+<![CDATA[
+]]>
+</delete>
 <!-- 
 Join : 두개 이상의 테이블에서 관련 열을 기준으로 행을 결합할때 사용
 내부 조인[INNER JOIN] : 두 테이블에서 일치하는 값을 갖는 레코드를 선택

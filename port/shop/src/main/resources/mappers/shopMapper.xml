@@ -113,7 +113,9 @@ row_number()[윈도우 함수 ] 번호는 기본적으로 1부터 시작하여 �
 <!-- 카트 삭제 -->
 <delete id="deleteCart">
 <![CDATA[
-delete tbl_cart where cartNum = #{cartNum} and userId = #{userId}
+delete tbl_cart 
+where cartNum = #{cartNum} 
+and userId = #{userId}
 ]]>
 </delete>
 <!-- 주문정보 -->
@@ -145,6 +147,7 @@ where userId = #{userId}
 <![CDATA[
 select
 o.orderId, o.userId, o.orderRec, o.userAddr1, o.userAddr2, o.userAddr3, o.orderPhone, o.amount, o.orderDate,
+d.orderDetailsNum, d.gdsNum, d.cartStock,
 g.gdsName, g.gdsThumbImg, g.gdsPrice
 from tbl_order o
 inner join tbl_order_details d

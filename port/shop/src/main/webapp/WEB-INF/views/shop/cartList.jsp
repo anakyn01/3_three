@@ -126,7 +126,7 @@
 					
 					<div class="inputArea input-group">
 						<label for="orderPhon" class="form-label w-10">수령인 연락처</label>
-						<input type="text" name="orderPhon" id="orderPhon" required="required" class="form-control w-90"/>
+						<input type="text" name="orderPhon" id="orderPhone" required="required" class="form-control w-90"/>
 					</div>
 					<!-- 
 					<div class="inputArea">

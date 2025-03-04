@@ -1,5 +1,7 @@
 package com.my.shop.controller;
 
+import java.text.DecimalFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -20,6 +22,9 @@ import com.my.shop.vo.CartListVO;
 import com.my.shop.vo.CartVO;
 import com.my.shop.vo.GoodsViewVO;
 import com.my.shop.vo.MemberVO;
+import com.my.shop.vo.OrderDetailVO;
+import com.my.shop.vo.OrderListVO;
+import com.my.shop.vo.OrderVO;
 import com.my.shop.vo.ReplyListVO;
 import com.my.shop.vo.ReplyVO;
 
@@ -138,6 +143,40 @@ public void getCartList(HttpSession session, Model model) throws Exception {
 		model.addAttribute("cartList", cartList);
 		
 	}
+	//주문
+	@PostMapping(value = "/cartList")
+	public String order(HttpSession session, OrderVO order, OrderDetailVO orderDetail)throws Exception{
+		logger.info("order");
+		
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		String userId = member.getUserId();
+		
+		//캘린더 호출
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR); //연도 추출
+		String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);//월 추출
+		String ymd = ym + new DecimalFormat("00").format(cal.get(Calendar.DATE));
+		String subNum = "";//랜덤 숫자를 저장할 문자열 변수
+		
+		for(int i=1; i <= 6; i++) {
+			subNum += (int)(Math.random() * 10);//0~9까지의 숫자를 생성하여 subNum에 저장
+		}
+		
+		String orderId = ymd + "_" + subNum; //[연월일]_[랜덤숫자]로 구성된 문자
+		
+		order.setOrderId(orderId);
+		order.setUserId(userId);
+		
+		service.orderInfo(order);
+		
+		orderDetail.setOrderId(orderId);
+		service.orderInfo_Details(orderDetail);
+		
+		//주문테이블, 주문 상세 테이블에 데이터를 전송하고 카트비우기
+		service.cartAllDelete(userId);
+		
+		return "redirect:/shop/orderList";
+	}
 	
 	
 	// 카트 삭제
@@ -165,6 +204,38 @@ public void getCartList(HttpSession session, Model model) throws Exception {
 		}		
 		return result;		
 	}
+	
+	//주문목록
+	@GetMapping("/orderList")
+	public void getOrderList(HttpSession session, OrderVO order, Model model)throws Exception{
+logger.info("orderlist");
+
+MemberVO member = (MemberVO)session.getAttribute("member");
+String userId = member.getUserId();
+
+order.setUserId(userId);
+List<OrderVO> orderList = service.orderList(order);
+model.addAttribute("orderList", orderList);
+	}
+	
+//주문상세목록 pk를 기준으로 글에 순번이 다르기 때문에 
+	@GetMapping("/orderView")
+public void getOrderList(HttpSession session, @RequestParam("n") String orderId, OrderVO order,  Model model)throws Exception{
+logger.info("get order view");
+
+MemberVO member = (MemberVO)session.getAttribute("member");
+String userId = member.getUserId();
+
+order.setUserId(userId);//pk
+order.setOrderId(orderId);//pk
+
+List<OrderListVO> orderView = service.orderView(order);
+model.addAttribute("orderView", orderView);
+
+	}
+	
+	
+
 	
 	
 	
