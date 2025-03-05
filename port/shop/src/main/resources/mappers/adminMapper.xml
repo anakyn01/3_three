@@ -54,30 +54,69 @@ delete tbl_goods where gdsNum = #{gdsNum}
 </delete>
 <insert id="addCart">
 <![CDATA[
+insert into tbl_cart (cartNum, userId, gdsNum, cartStock) 
+values 
+(seq_tbl_cart.nextval, #{userId}, #{gdsNum}, #{cartStock})
 ]]>
 </insert>
 <select id="cartList" resultType="com.my.shop.vo.CartListVO">
 <![CDATA[
+select
+row_number() over(order by c.cartNum desc) as num,
+c.cartNum, c.userId, c.gdsNum, c.cartStock, c.addDate,
+g.gdsName, g.gdsPrice, g.gdsThumbImg
+from tbl_cart c
+inner join tbl_goods g
+on c.gdsNum = g.gdsNum
+where c.userId = #{userId}
+]]>
+</select>
+<select id="orderList" resultType="com.my.shop.vo.OrderVO">
+<![CDATA[
+select
+orderId, userId, orderRec, userAddr1, userAddr2, userAddr3, orderPhone, amount, orderDate, delivery
+from tbl_order
 ]]>
 </select>
 <select id="orderView" resultType="com.my.shop.vo.OrderListVO">
 <![CDATA[
+select
+o.orderId, o.userId, o.orderRec, o.userAddr1, o.userAddr2, o.userAddr3, 
+o.orderPhone, o.amount, o.orderDate, o.delivery,
+d.orderDetailsNum, d.gdsNum, d.cartStock,
+g.gdsName, g.gdsThumbImg, g.gdsPrice
+from tbl_order o
+inner join tbl_order_details d
+on o.orderId = d.orderId
+inner join tbl_goods g
+on d.gdsNum = g.gdsNum
+where orderId = #{orderId}
 ]]>
 </select>
 <update id="delivery">
 <![CDATA[
+update tbl_order set delivery = #{delivery} where orderId = #{orderId}
 ]]>
 </update>
 <update id="changeStock">
 <![CDATA[
+update tbl_goods set gdsStock = gdsStock - #{gdsStock}
+where gdsNum = #{gdsNum}
 ]]>
 </update>
 <select id="allReply" resultType="com.my.shop.vo.ReplyListVO">
 <![CDATA[
+select 
+r.gdsNum, r.userId, r.repNum, r.repCon, r.repDate,
+m.userName
+from tbl_reply r
+inner join tbl_member m
+on r.userId = m.userId
 ]]>
 </select>
 <delete id="deleteReply">
 <![CDATA[
+delete tbl_reply where repNum = #{repNum}
 ]]>
 </delete>
 <!-- 

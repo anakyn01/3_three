@@ -10,6 +10,9 @@ import com.my.shop.persistence.AdminDAO;
 import com.my.shop.vo.CategoryVO;
 import com.my.shop.vo.GoodsVO;
 import com.my.shop.vo.GoodsViewVO;
+import com.my.shop.vo.OrderListVO;
+import com.my.shop.vo.OrderVO;
+import com.my.shop.vo.ReplyListVO;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -49,6 +52,37 @@ public class AdminServiceImpl implements AdminService {
 	public void goodsDelete(int gdsNum) throws Exception {
 		dao.goodsDelete(gdsNum);
 		
+	}
+
+	@Override
+	public List<OrderVO> orderList() throws Exception {
+		return dao.orderList();
+	}
+
+	@Override
+	public List<OrderListVO> orderView(OrderVO order) throws Exception {
+		return dao.orderView(order);
+	}
+
+	@Override
+	public void delivery(OrderVO order) throws Exception {
+	dao.delivery(order);
+		
+	}
+
+	@Override
+	public void changeStock(GoodsVO goods) throws Exception {
+		dao.changeStock(goods);		
+	}
+
+	@Override
+	public List<ReplyListVO> allReply() throws Exception {
+		return dao.allReply();
+	}
+
+	@Override
+	public void deleteReply(int repNum) throws Exception {
+		dao.deleteReply(repNum);		
 	}
 
 }

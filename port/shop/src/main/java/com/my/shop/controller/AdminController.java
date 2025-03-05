@@ -28,6 +28,10 @@ import com.my.shop.utils.UploadFileUtils;
 import com.my.shop.vo.CategoryVO;
 import com.my.shop.vo.GoodsVO;
 import com.my.shop.vo.GoodsViewVO;
+import com.my.shop.vo.OrderListVO;
+import com.my.shop.vo.OrderVO;
+import com.my.shop.vo.ReplyListVO;
+import com.my.shop.vo.ReplyVO;
 
 import net.sf.json.JSONArray;
 
@@ -206,7 +210,59 @@ public String postGoodsDelete(@RequestParam("n") int gdsNum) throws Exception{
 	adminService.goodsDelete(gdsNum);
 	return "redirect:/admin/index";
 }
+
+//주문 목록 : 상태변경은 어드민에서 해준다, 주문목록이 
+@GetMapping("/shop/orderList")//스프링 4.0이상일때 get과 post 매핑 사용가능
+//@RequestMapping()
+public void getOrderList(Model model)throws Exception{
+	logger.info("관리자에서 확인하는 이사이트에 모든 소비자 주문목록 진입");
+	List<OrderVO> orderList = adminService.orderList();
+	model.addAttribute("orderList",orderList);
+}
+
+//주문 상세 목록
+@GetMapping("/shop/orderView")
+public void getOrderList(@RequestParam("n") String orderId, Model model, OrderVO order)throws Exception{
+	logger.info("소비자 주문에 상세페이지");
 	
+	order.setOrderId(orderId);
+	List<OrderListVO> orderView = adminService.orderView(order);
+	
+	model.addAttribute("orderView", orderView);
+}
+
+//주문 상세 목록 - 상태변경 => 배송중 배송준비중 배송완료
+@PostMapping("/shop/orderView")
+public String delivery(OrderVO order) throws Exception{
+	logger.info("배송상태 설정창 진입");
+	adminService.delivery(order);
+	//기존 서비스 사용
+	List<OrderListVO> orderView = adminService.orderView(order);
+	//콘스트럭터 생성자 사용
+	GoodsVO goods = new GoodsVO();
+	
+	for(OrderListVO i : orderView) {
+		goods.setGdsNum(i.getGdsNum());
+		goods.setGdsStock(i.getCartStock());
+		adminService.changeStock(goods);
+	}
+	
+	return "redirect:/admin/shop/orderView?n=" + order.getOrderId();
+}
+//모든 소감(댓글)
+@GetMapping("shop/allReply")
+public void getAllReply(Model model)throws Exception{
+	logger.info("소비자가 쓴 모든 댓글");
+	List<ReplyListVO> reply = adminService.allReply();
+	model.addAttribute("reply", reply);
+}
+
+@PostMapping("shop/allReply")
+public String postAllReply(ReplyVO reply)throws Exception{
+	logger.info("소비자가 쓴 모든 댓글 삭제");
+	adminService.deleteReply(reply.getRepNum());
+	return "redirect:/admin/shop/allReply";
+}	
 	
 	
 	
