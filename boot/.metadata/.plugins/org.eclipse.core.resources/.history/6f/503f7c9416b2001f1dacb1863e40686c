@@ -1,9 +1,0 @@
-function includeHTML(){
-	var z, i, elmnt, file, xhttp;//변수 선언
-	
-z = document.getElementsByTagName("*");
-//z는 도큐먼트에서 모든 태그를 찾고
-elmnt = z[i];
-//변수 elmnt에 태그에 개별을 대입
-file = elmnt.getAttribute("w3-include-html");
-}

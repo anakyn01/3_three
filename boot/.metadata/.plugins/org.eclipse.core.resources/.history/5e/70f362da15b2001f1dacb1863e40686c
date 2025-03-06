@@ -1,5 +1,0 @@
-function includeHTML(){
-	var z, i, elmnt, file, xhttp;//변수 선언
-	
-z = document.getElementsByTagName("*");
-}
