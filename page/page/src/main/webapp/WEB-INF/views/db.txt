@@ -1,0 +1,19 @@
+CREATE DATABASE PAGE;
+USE PAGE;
+CREATE TABLE tbl_board(
+bno INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+title VARCHAR(100) NOT NULL,
+content TEXT NOT NULL,
+writer VARCHAR(30) NOT NULL,
+regDate TIMESTAMP DEFAULT NOW(),
+viewCnt INT DEFAULT 0
+);
+COMMIT;
+SELECT * FROM tbl_board;
+
+INSERT INTO tbl_board(title, content, writer) VALUES ('제목1','테스트1','작성자1');
+INSERT INTO tbl_board(title, content, writer) VALUES ('제목2','테스트2','작성자2');
+INSERT INTO tbl_board(title, content, writer) VALUES ('제목3','테스트3','작성자3');
+INSERT INTO tbl_board(title, content, writer) VALUES ('제목4','테스트4','작성자4');
+INSERT INTO tbl_board(title, content, writer) VALUES ('제목5','테스트5','작성자5');
+SELECT * FROM tbl_board;

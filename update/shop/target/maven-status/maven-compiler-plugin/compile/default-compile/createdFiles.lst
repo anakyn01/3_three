@@ -1,8 +1,0 @@
-com\my\shop\persistence\MemberDAO.class
-com\my\shop\service\MemberServiceImpl.class
-com\my\shop\controller\MemberController.class
-com\my\shop\service\MemberService.class
-com\my\shop\vo\MemberVO.class
-com\my\shop\persistence\MemberDAOImpl.class
-com\my\shop\vo\GoodsVO.class
-com\my\shop\controller\ShopController.class

@@ -1,0 +1,181 @@
+ALTER SEALTER SESSION SET "_ORACLE_SCRIPT"=true;
+create user "BOOK_SYS" identified by "1234";
+grant connect to "BOOK_SYS";
+grant resource to "BOOK_SYS";
+alter user "BOOK_SYS" default tablespace users quota unlimited on users;
+
+회원정보 테이블
+create table books_member(
+userId varchar2(100)not null primary key,
+userPass varchar2(100)not null,
+userPassRe varchar2(100)not null,
+userName varchar2(100)not null,
+userPhone varchar2(100)not null,
+userEmail varchar2(100)not null,
+userGender varchar2(100)not null,
+userAddr1 varchar2(100)not null,
+userAddr2 varchar2(100)not null,
+userAddr3 varchar2(100)not null,
+regiDate date default sysdate,
+verify number default 0
+);
+
+상품
+create table books_goods(
+gdsNum number not null primary key,
+gdsName varchar2(100) not null,
+cateCode number(10) not null,
+gdsPrice number not null,
+gdsStock number not null,
+gdsDes varchar2(500) not null,
+gdsImg varchar2(500) not null,
+gdsThumbImg varchar2(500) not null,
+gdsBirthDate date,
+gdsDate date default sysdate,
+gdsElec number default 0 //전자책 유무, 링크제공 
+//저자, 출판사, isbn 추가함
+);
+
+전자
+create table books_elec(
+gdsNum number not null primary key,
+gdselecPrice number not null,
+파일 형식
+지원 기기
+);
+
+
+카테고리
+create table books_category(
+cateName varchar2(100)not null,
+cateCode number(10) not null,
+cateCodeRef number(10) not null,
+primary key(cateCode),
+foreign key(cateCodeRef) references goods_category(cateCode) //실행안됨 재설정 필요
+);
+
+/*
+댓글테이블
+create table books_reply(
+gdsNum number not null,
+userId varchar2(50) not null,
+repNum number not null,
+repCon varchar2(2000) not null,
+repDate date default sysdate,
+primary key(gdsNum, repNum)
+);
+create sequence seq_tbl_reply;
+
+alter table tbl_reply
+add constraint tbl_reply_gdsNum foreign key(gdsNum)
+references tbl_goods(gdsNum);
+
+alter table tbl_reply
+add constraint tbl_reply_userId foreign key(userId)
+references tbl_member(userId);
+*/
+
+
+카트담기
+create table books_cart(
+cartNum number not null,
+userId varchar2(50) not null,
+gdsNum number not null,
+cartStock number not null,
+addDate date default sysdate,
+primary key(cartNum, userId)
+);
+create sequence seq_tbl_cart;
+
+alter table tbl_cart
+add constraint tbl_cart_userId foreign key(userId)
+references tbl_member(userId);
+
+alter table tbl_cart
+add constraint tbl_cart_gdsNum foreign key(gdsNum)
+references tbl_member(gdsNum);
+
+주문정보
+create table books_order(
+orderNum number not null primary key,
+userId varchar2(100) not null,
+orderRec varchar2(100) not null,
+userAddr1 varchar2(100) not null,
+userAddr2 varchar2(100) not null,
+userAddr3 varchar2(100) not null,
+orderPhone varchar2(100) not null,
+amount number not null,
+orderDate date default sysdate,
+delivery varchar2(100)
+);
+
+상세주문
+create table book_order_detail primary key(
+orderDetailsNum number not null, 
+orderId varchar2(100) not null, 
+gdsNum number not null, 
+cartStock number not null
+);
+
+
+
+책댓글
+create table books_reply(
+gdsNum number not null,
+userId varchar2(50) not null,
+repNum number not null,
+repCon varchar2(2000) not null,
+repDate date default sysdate,
+primary key(gdsNum, repNum),
+FOREIGN KEY (gdsNum) REFERENCES books_goods(gdsNum),  -- 외래키 추가
+FOREIGN KEY (userId) REFERENCES books_member(userId)
+);
+
+
+문의글
+create table books_qa(
+qaNum number not null primary key,
+userId varchar2(100) not null,
+qaTitle varchar2(256) not null,
+qaBd nclob not null,
+qaCate varchar2 not null,
+qaDate date default sysdate,
+FOREIGN KEY (userId) REFERENCES books_member(userId)
+);
+
+
+
+//////임시///////
+CREATE TABLE payment (
+    paymentId NUMBER NOT NULL PRIMARY KEY,
+    orderNum NUMBER NOT NULL,
+    userId VARCHAR2(100) NOT NULL,
+    paymentMethod VARCHAR2(50) NOT NULL,  -- 카드, 계좌이체, 간편결제 등
+    paymentStatus VARCHAR2(50) DEFAULT 'PENDING',  -- 결제 상태 (성공, 대기, 취소 등)
+    paymentDate DATE DEFAULT SYSDATE,
+    amount NUMBER NOT NULL,
+    FOREIGN KEY (orderNum) REFERENCES books_order(orderNum),
+    FOREIGN KEY (userId) REFERENCES users(userId)
+);
+CREATE TABLE delivery (
+    deliveryId NUMBER NOT NULL PRIMARY KEY,
+    orderNum NUMBER NOT NULL,
+    trackingNumber VARCHAR2(100),  -- 운송장 번호
+    courier VARCHAR2(100),  -- 택배사 이름
+    deliveryStatus VARCHAR2(50) DEFAULT 'PROCESSING',  -- 배송 상태 (배송 준비, 배송 중, 배송 완료 등)
+    estimatedDate DATE,  -- 예상 도착일
+    deliveredDate DATE,  -- 실제 배송 완료 날짜
+    FOREIGN KEY (orderNum) REFERENCES books_order(orderNum)
+);
+
+CREATE TABLE reviews (
+    reviewId NUMBER NOT NULL PRIMARY KEY,
+    gdsNum NUMBER NOT NULL,
+    userId VARCHAR2(100) NOT NULL,
+    rating NUMBER CHECK (rating BETWEEN 1 AND 5),  -- 별점 (1~5)
+    reviewContent VARCHAR2(2000) NOT NULL,
+    reviewDate DATE DEFAULT SYSDATE,
+    FOREIGN KEY (gdsNum) REFERENCES books(gdsNum),
+    FOREIGN KEY (userId) REFERENCES users(userId)
+);
+
